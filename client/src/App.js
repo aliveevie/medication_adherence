@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 
@@ -10,7 +9,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
-        console.log(data);
+        
       });
   }, []);
 

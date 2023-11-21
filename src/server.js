@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('/api', async (req, res) => {
     const result = await db.query('SELECT * FROM people');
-    console.log(result.rows)
     res.json(result.rows);
 });
 

@@ -2,14 +2,16 @@ const express = require('express');
 const port = 3001;
 const app = express();
 const db = require('../database/db');
-
-//app.use(express.static(path.join(__dirname, '../client/public')));
-
+const path = require('path');
 
 
-//app.get('*', (req, res) => {
- //   res.sendFile(path.join(__dirname, '../client/public', 'index.html'));
- // });
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
 
 
 app.get('/api', async (req, res) => {

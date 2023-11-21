@@ -1,0 +1,35 @@
+.regimen-form {
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .regimen-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .regimen-form label {
+    margin-bottom: 10px;
+  }
+  
+  .regimen-form input,
+  .regimen-form textarea {
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .regimen-form button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .regimen-form button:hover {
+    background-color: #45a049;
+  }
+  

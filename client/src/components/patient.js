@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './patient.css'
+import '../styles/patient.css'
 
 export default function Patient() {
   const [regimenData, setRegimenData] = useState({

@@ -1,15 +1,16 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import Patient from './components/patient';
+import Introduction from './components/introduction';
 
 function App() {
   
   return (
-    <div className="App">
-      <header className="App-header">
-       <Patient />
-      </header>
-    </div>
+    
+     
+       <Introduction />
+     
+    
   );
 }
 

@@ -1,0 +1,44 @@
+/* introduction.css */
+
+.introduction {
+    background-image: url(../images/medical2.jpg);
+    background-size: cover; /* Ensure the background image covers the entire container */
+    background-position: center; /* Center the background image */
+    padding: 100px;
+    text-align: center;
+  }
+  
+  .text h2 {
+    font-size: 8vw;
+    color: blue
+  }
+  
+  .text-color {
+    /* Since the text is already red, you can remove this class or customize as needed */
+    color: red;
+}
+  
+  .text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    display: inline-block;
+    background-color: #2ecc71;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+
+  .buttons:hover {
+    background-color: #27ae60;
+}
+
+.text:nth-child(1){
+    color: red;
+}

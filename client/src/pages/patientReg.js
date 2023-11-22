@@ -39,6 +39,7 @@ const PatientSignUp = () => {
           type="text"
           name="firstName"
           value={signupData.firstName}
+          placeholder='First Name'
           onChange={handleChange}
           required
         />
@@ -50,6 +51,7 @@ const PatientSignUp = () => {
           name="lastName"
           value={signupData.lastName}
           onChange={handleChange}
+          placeholder='Last Name'
           required
         />
       </label>

@@ -7,7 +7,7 @@ import link from '../icons/link.svg';
 const Confirmation = () => {
   
   return (
-    <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+    <form className="auth-form" method="post" action="/">
       <img src={logo} alt="logo" />
       <div className='form-header' >
           <h2>Let’s verify your email</h2>

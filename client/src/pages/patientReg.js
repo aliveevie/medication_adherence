@@ -3,13 +3,19 @@ import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
 import PatientLogin from './patientLogin';
+import Confirmation from './confimationLink';
 
 const PatientSignUp = () => {
 
   const [showLogin, setShowLogin] = useState(false);
+  const [confirmation, setConfirmation] = useState(false);
 
  function handleLogin(){
       setShowLogin(true)
+ }
+
+ function handleConfirmation(){
+    setConfirmation(true)
  }
 
   const [signupData, setSignupData] = useState({
@@ -33,9 +39,11 @@ const PatientSignUp = () => {
     setShowLogin(true);
   };
 
-  return (
 
-    !showLogin ? (
+
+  return (
+    <>
+        {!showLogin && !confirmation && (
       <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
       <img src={logo} alt="logo" />
       <div className='form-header' >
@@ -87,13 +95,12 @@ const PatientSignUp = () => {
             placeholder="8 characters"
             required
           />
-       
         </div>
       </label>
       <div className="checkbox-container">
         <input type="checkbox" /><span>Remember Password</span>
       </div>
-      <button type="submit">Create Account</button>
+      <button type="submit" onClick={handleConfirmation} >Create Account</button>
       <div className="or-divider">
         <hr />
         <span className="or-text">or</span>
@@ -111,11 +118,19 @@ const PatientSignUp = () => {
       </div>
       <div className="already">
         <p>
-          Already have an account? <a href="#" onClick={handleLogin} >SignIn</a>
+            Already have an account? <a href="#" onClick={handleLogin} >SignIn</a>
         </p>
       </div>
     </form>
-    ) : <PatientLogin />
+    )}
+
+    {showLogin && !confirmation && <PatientLogin />}
+
+    {confirmation && <Confirmation />}
+
+
+    </>
+    
 
    
   );

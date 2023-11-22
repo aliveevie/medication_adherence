@@ -1,6 +1,7 @@
 // SignupForm.js
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
+import logo from '../icons/logo.svg';
 
 const PatientSignUp = () => {
   const [signupData, setSignupData] = useState({
@@ -23,27 +24,30 @@ const PatientSignUp = () => {
     // Add signup logic here
     console.log('Signup Data:', signupData);
   };
-  
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit} method='post' action='/'>
-      <h2>Welcome to MedEase</h2>
-      <p>Create your Account</p>
+    <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+      <img src={logo} alt="logo" />
+      <div className='form-header' >
+          <h2>Welcome to MedEase</h2>
+          <p>Create your Account</p>
+      </div>
+     
       <label>
-        first name
+        First Name
         <input
           type="text"
-          name="name"
+          name="firstName"
           value={signupData.firstName}
           onChange={handleChange}
           required
         />
       </label>
       <label>
-        last name
+        Last Name
         <input
           type="text"
-          name="name"
+          name="lastName"
           value={signupData.lastName}
           onChange={handleChange}
           required
@@ -56,43 +60,50 @@ const PatientSignUp = () => {
           name="email"
           value={signupData.email}
           onChange={handleChange}
-          placeholder='Email Address'
+          placeholder="Email Address"
           required
         />
       </label>
       <label>
         Password
-        <input
-          type="password"
-          name="password"
-          value={signupData.password}
-          onChange={handleChange}
-          placeholder='8 character'
-          required
-        />
-        <i className='fa fas-padlock' ></i>
+        <div className="password-input">
+          <input
+            type="password"
+            name="password"
+            value={signupData.password}
+            onChange={handleChange}
+            placeholder="8 characters"
+            required
+          />
+       
+        </div>
       </label>
-      <input 
-      type='checkbox'
-      />
-      remember password
+      <div className="checkbox-container">
+        <input type="checkbox" /><span>Remember Password</span>
+      </div>
       <button type="submit">Create Account</button>
-      <div className='or' >or</div>
-    <div className='google-signup' >
-        <a href='#' >Sign up With Google</a>
-    </div>
-    <div className='terms' >
-        <p>By clicking on “create account” you agree to MedEase 
-            <a href='/' > terms and conditions</a>
+      <div className="or-divider">
+        <hr />
+        <span className="or-text">or</span>
+        <hr />
+      </div>
+      <div className="google-signup">
+        <i className="fab fa-google"></i>
+        <a href="/">Sign up With Google</a>
+      </div>
+      <div className="terms">
+        <p>
+          By clicking on “create account” you agree to MedEase{' '}
+          <a href="/">terms and conditions</a>
         </p>
-    </div>
-    <div className='already' >
-        <p>Already have an account?  
-            <a href='/' >SignIn</a>
+      </div>
+      <div className="already">
+        <p>
+          Already have an account? <a href="/">SignIn</a>
         </p>
-    </div>
+      </div>
     </form>
   );
 };
 
-export default PatientSignUp ;
+export default PatientSignUp;

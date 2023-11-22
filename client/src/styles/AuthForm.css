@@ -1,48 +1,117 @@
 /* AuthForm.css */
-
 .auth-form {
-    max-width: 300px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .auth-form h2 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .auth-form label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  .auth-form input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .auth-form button {
-    background-color: #2ecc71;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-  }
-  
-  .auth-form button:hover {
-    background-color: #27ae60;
-  }
-  
-  /* Responsive Styles */
-  @media (min-width: 600px) {
-    .auth-form {
-      max-width: 400px;
-    }
-  }  
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.auth-form img {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+.auth-form h2 {
+  color: #0E9061; /* Green color for H element */
+}
+
+.auth-form p {
+  color: #000; /* Black color for paragraph element */
+  margin-bottom: 20px;
+}
+
+.auth-form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid #ccc; /* Line under each input */
+  box-sizing: border-box;
+  outline: none;
+}
+
+.auth-form i.fas-padlock {
+  margin-left: 5px;
+}
+
+.auth-form .checkbox-container {
+  display: flex;
+  position: relative;
+  right: 23%;
+  font-size: auto;
+}
+
+.auth-form .checkbox-container span{
+  position: relative;
+  right: 20%;
+  text-align: left;
+  width: 100%;
+}
+
+.auth-form .checkbox-container input {
+  margin-right: 10px; /* Add some spacing between the checkbox and text */
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: First Name; /* Green color for button */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #0E9061;
+}
+
+.auth-form .or-divider {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.auth-form .or-divider hr {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+  border: none;
+}
+
+.auth-form .or-text {
+  margin: 0 10px;
+  color: #666;
+  text-align: center;
+}
+
+/* AuthForm.css */
+/* ... (Previous styles) */
+
+.auth-form .google-signup {
+  border: 2px solid #0E9061;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.auth-form .google-signup a {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.auth-form .google-signup .fa-google {
+  color: #4285f4; /* Google's official blue color */
+  font-size: 20px;
+}
+
+
+
+

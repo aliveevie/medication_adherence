@@ -2,8 +2,16 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
+import PatientLogin from './patientLogin';
 
 const PatientSignUp = () => {
+
+  const [showLogin, setShowLogin] = useState(false);
+
+ function handleLogin(){
+      setShowLogin(true)
+ }
+
   const [signupData, setSignupData] = useState({
     firstName: '',
     lastName: '',
@@ -22,11 +30,13 @@ const PatientSignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add signup logic here
-    console.log('Signup Data:', signupData);
+    setShowLogin(true);
   };
 
   return (
-    <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+
+    !showLogin ? (
+      <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
       <img src={logo} alt="logo" />
       <div className='form-header' >
           <h2>Welcome to MedEase</h2>
@@ -101,10 +111,13 @@ const PatientSignUp = () => {
       </div>
       <div className="already">
         <p>
-          Already have an account? <a href="/">SignIn</a>
+          Already have an account? <a href="#" onClick={handleLogin} >SignIn</a>
         </p>
       </div>
     </form>
+    ) : <PatientLogin />
+
+   
   );
 };
 

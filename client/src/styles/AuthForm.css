@@ -11,8 +11,6 @@
   margin-top: 10vh; /* Adjust the top margin as needed */
 }
 
-/* ... (Other styles) */
-
 
 .auth-form img {
   display: block;
@@ -51,7 +49,7 @@
 .auth-form .checkbox-container {
   display: flex;
   position: relative;
-  right: 23%;
+  right: 20%;
   font-size: auto;
 }
 
@@ -60,6 +58,15 @@
   right: 20%;
   text-align: left;
   width: 100%;
+}
+
+.auth-form .checkbox-container a{
+  font-size: x-small;
+  width: 50%;
+  position: relative;
+  left: 15%;
+  text-decoration: none;
+  color: #0E9061;
 }
 
 .auth-form .checkbox-container input {

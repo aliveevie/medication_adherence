@@ -1,6 +1,7 @@
 // SignupForm.js
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
+import logo from '../icons/logo.svg'
 
 const SignupForm = () => {
   const [signupData, setSignupData] = useState({
@@ -22,9 +23,11 @@ const SignupForm = () => {
     // Add signup logic here
     console.log('Signup Data:', signupData);
   };
+  
 
   return (
     <form className="auth-form" onSubmit={handleSubmit}>
+      <img  src={logo} alt='logo' />
       <h2>Sign Up</h2>
       <label>
         Name:

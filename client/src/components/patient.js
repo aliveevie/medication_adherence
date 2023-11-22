@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/patient.css'
 import logo from '../icons/logo2.svg'
+import PatientSignUp from '../pages/patientReg';
 
 export default function Patient() {
  
@@ -15,6 +16,7 @@ export default function Patient() {
            I'm a Doctor 
         </button>
       </div>
+      <PatientSignUp />
     </div>
   );
 }

@@ -37,6 +37,7 @@ const PatientSignUp = () => {
     e.preventDefault();
     // Add signup logic here
     setShowLogin(true);
+    setConfirmation(true);
   };
 
 
@@ -100,10 +101,10 @@ const PatientSignUp = () => {
       <div className="checkbox-container">
         <input type="checkbox" /><span>Remember Password</span>
       </div>
-      <button type="submit" onClick={handleConfirmation} >Create Account</button>
+      <button type="submit" onSubmit={handleConfirmation} >Create Account</button>
       <div className="or-divider">
         <hr />
-        <span className="or-text">or</span>
+      <span className="or-text">or</span>
         <hr />
       </div>
       <div className="google-signup">
@@ -128,11 +129,7 @@ const PatientSignUp = () => {
 
     {confirmation && <Confirmation />}
 
-
     </>
-    
-
-   
   );
 };
 

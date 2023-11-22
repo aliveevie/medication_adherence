@@ -119,7 +119,10 @@
   margin-left: 10px;
   text-decoration: none;
   color: #333;
+  cursor: pointer;
 }
+
+
 
 .auth-form .google-signup .fa-google {
   color: #4285f4; /* Google's official blue color */

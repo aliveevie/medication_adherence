@@ -58,7 +58,7 @@ const PatientLogin = () => {
       </label>
       <div className="checkbox-container">
         <input type="checkbox" /><span>Remember Password</span>
-        <a href='/' >Forgot Password ?</a>
+        <a href='/' >Forgot Password</a>
       </div>
       <button type="submit">Sign</button>
       <div className="or-divider">

@@ -32,7 +32,7 @@ const ResetVerification = () => {
             will be sent to your email to help you reset your password
         </p>
       </div>
-  
+      
       <label>
         Email
         <input
@@ -50,4 +50,4 @@ const ResetVerification = () => {
   );
 };
 
-export default PatientLogin;
+export default ResetVerification;

@@ -5,7 +5,10 @@ import logo from '../icons/logo.svg';
 import PatientLogin from './patientLogin';
 import Confirmation from './confimationLink';
 
-const PatientSignUp = () => {
+const PatientSignUp = (props) => {
+
+  const { api } = props;
+  console.log(api)
 
   const [showLogin, setShowLogin] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
@@ -33,19 +36,46 @@ const PatientSignUp = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add signup logic here
-    setShowLogin(true);
-    setConfirmation(true);
+  
+    try {
+      const response = await fetch(api, {
+        method: 'POST', // or 'PUT' or 'PATCH' depending on your API
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+        body: JSON.stringify(signupData),
+      });
+  
+      if (!response.ok) {
+        // Handle error responses from the server
+        console.error('Error:', response.statusText);
+        // Optionally show an error message to the user
+        return;
+      }
+  
+      const responseData = await response.json();
+      console.log('Response data:', responseData);
+  
+      // Depending on your API response, you can handle success or show a confirmation message
+      setShowLogin(true);
+      setConfirmation(true);
+    } catch (error) {
+      console.error('Error:', error.message);
+      // Handle other errors, such as network errors
+      // Optionally show an error message to the user
+    }
   };
-
+  
 
 
   return (
     <>
         {!showLogin && !confirmation && (
-      <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+      <form className="auth-form" onSubmit={handleSubmit} method="post" 
+      action={api}>
       <img src={logo} alt="logo" />
       <div className='form-header' >
           <h2>Welcome to MedEase</h2>

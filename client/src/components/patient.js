@@ -8,16 +8,19 @@ export default function Patient() {
 
   const [showPatient, setShowPatient] = useState(false);
   const [showDoctor, setShowDoctor] = useState(false);
+  const [api, setApi] = useState('');
 
   const handlePatientRegister = () => {
-    setShowPatient(true)
+    setShowPatient(true);
+    setApi('/api/patient/register');
   }
 
   function handleDoctorRegister(){
       setShowDoctor(true);
+      setApi('/api/doctor/register');
   }
+
   
- 
   return (
 
     <>
@@ -40,9 +43,9 @@ export default function Patient() {
     </div>
     )}
 
-    {showPatient && <PatientSignUp /> }
+    {showPatient && <PatientSignUp api={api} /> }
 
-    {showDoctor && <DoctorLogin /> }
+    {showDoctor && <DoctorLogin  api={api} /> }
 
     </>
   

@@ -1,35 +1,49 @@
-.regimen-form {
-    max-width: 400px;
-    margin: auto;
+.patient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh; /* 100% of the viewport height */
+  background-color: #0E9061;
+  padding: 20px; /* Add padding for spacing */
+}
+
+.logo {
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.button-class {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-class button {
+  margin-top: 10px;
+  width: 100%;
+  background-color: white;
+  padding: 15px;
+  color: #0E9061;
+  border: 1px solid #0E9061;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-class button:hover {
+  background-color: #0E9061;
+  color: white;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .patient {
+    padding: 10px; /* Adjust the padding for smaller screens */
   }
-  
-  .regimen-form form {
-    display: flex;
-    flex-direction: column;
+
+  .button-class {
+    width: 100%;
   }
-  
-  .regimen-form label {
-    margin-bottom: 10px;
-  }
-  
-  .regimen-form input,
-  .regimen-form textarea {
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .regimen-form button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .regimen-form button:hover {
-    background-color: #45a049;
-  }
-  
+}

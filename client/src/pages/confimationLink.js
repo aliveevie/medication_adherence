@@ -22,4 +22,4 @@ const Confirmation = () => {
   );
 };
 
-export default Patient;
+export default Confirmation;

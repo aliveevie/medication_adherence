@@ -1,6 +1,7 @@
 // LoginForm.js
 import React, { useState } from 'react';
-import './styles/AuthForm.css';
+import '../styles/AuthForm.css';
+
 
 const LoginForm = () => {
   const [loginData, setLoginData] = useState({

@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
+import ResetLink from './resetlink';
+
 
 const ResetVerification = () => {
   const [signupData, setSignupData] = useState({
@@ -19,35 +21,45 @@ const ResetVerification = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
- 
+    setLink(true)
   };
 
-  return (
-    <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
-      <img src={logo} alt="logo" />
-      <div className='form-header' >
-          <h2>Let’s reset your password</h2>
-          <p>A verification link
-            will be sent to your email to help you reset your password
-        </p>
-      </div>
-      
-      <label>
-        Email
-        <input
-          type="email"
-          name="email"
-          value={signupData.email}
-          onChange={handleChange}
-          placeholder="Email Address"
-          required
-        />
-      </label>
+  const [link, setLink] = useState(false);
 
-      <button type="submit">Reset Password</button>
-    </form>
+
+  return (
+    <>
+      {!link && (
+         <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+         <img src={logo} alt="logo" />
+         <div className='form-header' >
+             <h2>Let’s reset your password</h2>
+             <p>A verification link
+               will be sent to your email to help you reset your password
+           </p>
+         </div>
+         
+         <label>
+           Email
+           <input
+             type="email"
+             name="email"
+             value={signupData.email}
+             onChange={handleChange}
+             placeholder="Email Address"
+             required
+           />
+         </label>
+   
+         <button type="submit">Reset Password</button>
+       </form>
+      )}
+
+      {link && <ResetLink /> }
+    </>
+   
   );
 };
+
 
 export default ResetVerification;

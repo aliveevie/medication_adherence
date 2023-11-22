@@ -102,7 +102,9 @@ const PatientLogin = () => {
 
     {signup && !reset && <PatientSignUp /> }
 
-   
+    {!signup && reset && <ResetVerification />}
+
+
    </>
   );
 };

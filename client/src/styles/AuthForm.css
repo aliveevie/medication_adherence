@@ -1,11 +1,18 @@
 /* AuthForm.css */
+/* AuthForm.css */
 .auth-form {
   text-align: center;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px; /* Set a maximum width for the form */
+  margin: 0 auto; /* Center the form horizontally */
+  margin-top: 10vh; /* Adjust the top margin as needed */
 }
+
+/* ... (Other styles) */
+
 
 .auth-form img {
   display: block;

@@ -2,8 +2,8 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
-import ResetLink from './resetlink';
-
+// import ResetLink from './resetlink';
+import NewPassword from './newPassword';
 
 const ResetVerification = () => {
   const [signupData, setSignupData] = useState({
@@ -55,7 +55,7 @@ const ResetVerification = () => {
        </form>
       )}
 
-      {link && <ResetLink /> }
+      {link && <NewPassword /> }
     </>
    
   );

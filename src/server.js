@@ -3,12 +3,16 @@ const port = 3001;
 const app = express();
 const db = require('../database/db');
 const path = require('path');
+const bodyParser = require('body-parser');
+
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
 
 app.use(express.static(path.join(__dirname, '../client/build')));
 
-app.get('/api', async (req, res) => {
-    const result = await db.query('SELECT * FROM people');
-    res.json(result.rows);
+app.post('/api/patient/register', async (req, res) => {
+        console.log(req.body)
 });
 
 app.get('/', (req, res) => {

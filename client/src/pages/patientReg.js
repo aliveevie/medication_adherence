@@ -75,7 +75,7 @@ const PatientSignUp = (props) => {
     <>
         {!showLogin && !confirmation && (
       <form className="auth-form" onSubmit={handleSubmit} method="post" 
-      action={api}>
+      >
       <img src={logo} alt="logo" />
       <div className='form-header' >
           <h2>Welcome to MedEase</h2>

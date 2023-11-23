@@ -36,15 +36,13 @@ app.post('/api/doctor/login', async (req, res) => {
 
 app.post('/api/patient/login', async (req, res) => {
         const { email, password } = req.body;
-        const result = await db.query('SELECT email, password FROM patients WHERE email=$1 AND password=$2', [email, password])
+        const result = await db.query('SELECT first_name, email, password FROM patients WHERE email=$1 AND password=$2', [email, password])
         if(result.rows.length===0){
             res.json({Error: 'Invalid Username or password'});
         }else{
-            res.json({Error: 'Success'});
+            res.json({name: result.rows[0].first_name});
         }
     });
-
-
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));

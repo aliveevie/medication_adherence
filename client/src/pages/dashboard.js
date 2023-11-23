@@ -7,13 +7,14 @@ import link from '../icons/link.svg';
 const Dashboard = (props) => {
   const { name } = props;
   
+
   return (
     <form className="auth-form" method="post" action="/">
       <img src={logo} alt="logo" />
       <div className='form-header' >
-          <h2>Hello, Welcome to your Dashboard</h2>
+          <h2>Hello {name} Welcome</h2>
         <p>
-            Please Manage your Dashboard Here!
+            Please Let's remind you about your next appointment with your doctor
         </p>
       </div>
       <img 

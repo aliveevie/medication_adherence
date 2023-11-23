@@ -38,7 +38,7 @@ const PatientSignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    setConfirmation(true);
     try {
       const response = await fetch(api, {
         method: 'POST', // or 'PUT' or 'PATCH' depending on your API
@@ -48,20 +48,21 @@ const PatientSignUp = (props) => {
         },
         body: JSON.stringify(signupData),
       });
-  
+      
       if (!response.ok) {
         // Handle error responses from the server
         console.error('Error:', response.statusText);
         // Optionally show an error message to the user
+      
         return;
       }
   
       const responseData = await response.json();
-      console.log('Response data:', responseData);
+     
   
       // Depending on your API response, you can handle success or show a confirmation message
-      setShowLogin(true);
-      setConfirmation(true);
+     // setShowLogin(true);
+     
     } catch (error) {
       console.error('Error:', error.message);
       // Handle other errors, such as network errors
@@ -131,7 +132,7 @@ const PatientSignUp = (props) => {
       <div className="checkbox-container">
         <input type="checkbox" /><span>Remember Password</span>
       </div>
-      <button type="submit" onSubmit={handleConfirmation} >Create Account</button>
+      <button type="submit" >Create Account</button>
       <div className="or-divider">
         <hr />
       <span className="or-text">or</span>

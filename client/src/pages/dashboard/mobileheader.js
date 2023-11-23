@@ -5,12 +5,12 @@ import  small from  '../../icons/small.svg';
 
 function MobileHeader(props){
     const { name } = props;
-
+   
     return (
         <div className='mobile-header'>
             <img  src={hamb} alt='Hamburger Menu' />
             <img  src={small} alt='Small Icons' />
-            <img  src={name}  className='name' />
+            <p   className='name'>{name.slice(0, 3)}</p>
         </div>
     );
 }

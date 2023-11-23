@@ -49,20 +49,20 @@
   
   
   .dash-body {
-    text-align: center;
-    padding: 20px;
     background-color: #c0f8da;
+    border-radius: 5%;
+    margin: 10% 3%;
   }
   
   .dash-icon {
-    display: flex;
-    align-items: center;
+    margin-left: 5%;
   }
   
   .dash-text {
     padding: 20px;
     border-radius: 8px;
-    margin-left: 15px;
+    margin-left: 5%;
+    margin-top: -15%;
   }
   
   .dash-text h2 {
@@ -81,13 +81,13 @@
   }
   
   /* Responsive Styles */
-  @media (min-width: 600px) {
+  @media (max-width: 800px) {
     .dash-header {
       padding: 20px;
     }
   
     .dash-body {
-      padding: 40px;
+      display: block;
     }
   
     .dash-text {
@@ -103,5 +103,12 @@
     background-color: #0e9061;
     display: flex;
     justify-content: space-evenly;
+  }
+
+  .name{
+    border-radius: 50%;
+    background-color: white;
+    padding: 1%;
+    margin: 3%;
   }
   

@@ -7,8 +7,8 @@ import Confirmation from './confimationLink';
 
 const PatientSignUp = (props) => {
 
-  const { api } = props;
- 
+  const { api, api2 } = props;
+  console.log(api, api2);
 
   const [showLogin, setShowLogin] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
@@ -156,7 +156,7 @@ const PatientSignUp = (props) => {
     </form>
     )}
 
-    {showLogin && !confirmation && <PatientLogin />}
+    {showLogin && !confirmation && <PatientLogin  api2={api2} />}
 
     {confirmation && <Confirmation />}
 

@@ -5,7 +5,11 @@ import logo from '../icons/logo.svg';
 import PatientSignUp from './patientReg';
 import ResetVerification from './verificationLink';
 
-const PatientLogin = () => {
+const PatientLogin = (props) => {
+
+  const { api2 } = props;
+  console.log(api2);
+
   const [signupData, setSignupData] = useState({
     email: ''
   });
@@ -34,8 +38,6 @@ const PatientLogin = () => {
   function handleReset(){
           setReset(true);
   }
-
-
 
   return (
    <>

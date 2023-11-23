@@ -7,6 +7,7 @@ import heart from '../icons/heart.svg';
 import '../styles/dashboard.css';
 import DeskTopHeader from './dashboard/Desktop';
 import MobileHeader from './dashboard/mobileheader';
+import VerticalComponent from './dashboard/verticalComponent';
 
 const Dashboard = (props) => {
   const { name } = props;
@@ -51,6 +52,7 @@ const Dashboard = (props) => {
       <div className='dash-heart' >
           <img src={heart} alt='The Heart'  />
       </div>
+      <VerticalComponent />
     </div>
   );
 };

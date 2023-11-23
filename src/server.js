@@ -30,12 +30,23 @@ app.post('/api/doctor/register', async (req, res) => {
     const result = await db.query('SELECT doctor_id FROM doctors WHERE email=$1', [email]);
 
     if(result.rows.length===0){
-        db.query('INSERT INTO doctors(first_name, last_name, email, password) VALUES($1, $2, $3, $4)', [firstName, lastName, email, password]);
+        db.query('INSERT INTO doctors(first_name, last_name, email, password) VALUES($1, $2, $3, $4)', [firstName, lastName, email, password])
+        .then(() => res.json({name:firstName}))
+    }else{
+        res.json({Error:'User Already Exist!'})
+        return;
     }
+
 });
 
 app.post('/api/doctor/login', async (req, res) => {
-        console.log(req.body);
+        const { email, password } = req.body;
+        const result = await db.query('SELECT first_name, email, password FROM doctors WHERE email=$1 AND password=$2', [email, password])
+        if(result.rows.length===0){
+            res.json({Error: 'Invalid Username or password'});
+        }else{
+            res.json({name: result.rows[0].first_name});
+        }
 });
 
 app.post('/api/patient/login', async (req, res) => {

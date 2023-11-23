@@ -1,113 +1,192 @@
+@import url("https://fonts.cdnfonts.com/css/comfortaa-3");
+@import url("https://fonts.cdnfonts.com/css/darker-grotesque");
+@import url("https://fonts.cdnfonts.com/css/commissioner-2");
+
 /* AuthForm.css */
 /* AuthForm.css */
 .auth-form {
-  text-align: center;
-  padding: 20px;
   background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 400px; /* Set a maximum width for the form */
   margin: 0 auto; /* Center the form horizontally */
-  margin-top: 10vh; /* Adjust the top margin as needed */
+  margin-top: 5vh; /* Adjust the top margin as needed */
 }
 
-
-.auth-form img {
-  display: block;
-  margin: 0 auto 20px;
+.logo {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
 }
 
-.auth-form h2 {
-  color: #0E9061; /* Green color for H element */
+.logo img {
+  margin-top: 35px;
 }
 
-.auth-form p {
+.logo h3 {
+  color: white;
+  font-size: 34px;
+  font-weight: 700;
+  font-family: "Commissioner", sans-serif;
+}
+
+.form-header h2 {
+  color: #0e9061; /* Green color for H element */
+  text-align: left;
+  font-family: "Commissioner", sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.form-header p {
   color: #000; /* Black color for paragraph element */
   margin-bottom: 20px;
-}
-
-.auth-form label {
-  display: block;
+  font-weight: 600;
+  font-size: 16px;
   text-align: left;
-  margin-bottom: 10px;
 }
 
-.auth-form input {
-  width: 100%;
+label {
+  text-align: left;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-family: "Darker Grotesque", sans-serif;
+}
+
+input {
+  width: 90%;
   padding: 10px;
   margin-bottom: 15px;
   border: none;
   border-bottom: 1px solid #ccc; /* Line under each input */
-  box-sizing: border-box;
   outline: none;
+}
+
+input::placeholder {
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .auth-form i.fas-padlock {
   margin-left: 5px;
 }
 
-.auth-form .checkbox-container {
+.checkbox-container {
   display: flex;
+  flex-direction: row;
   position: relative;
-  right: 20%;
-  font-size: auto;
+  right: 22%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.auth-form .checkbox-container span{
+.checkbox-container input {
+  margin-top: 5px;
+  margin-right: 10px; /* Add some spacing between the checkbox and text */
+  background: #d9d9d9;
+  color: #d9d9d9;
+  border: none;
+  outline: none;
+}
+
+.checkbox-container span {
   position: relative;
   right: 20%;
   text-align: left;
   width: 100%;
+  font-size: 16px;
+  font-family: "Darker Grotesque", sans-serif;
+  font-weight: 500;
 }
 
-.auth-form .checkbox-container a{
-  font-size: x-small;
-  width: 50%;
+.checkbox-container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  right: 14%;
   position: relative;
-  left: 15%;
-  text-decoration: none;
-  color: #0E9061;
+  margin-bottom: 10px;
 }
 
-.auth-form .checkbox-container input {
-  margin-right: 10px; /* Add some spacing between the checkbox and text */
+.checkbox-container2 input {
+  margin-top: 5px;
+  margin-right: 28px; /* Add some spacing between the checkbox and text */
+  background: #d9d9d9;
+  color: #d9d9d9;
+  border: none;
+  outline: none;
 }
 
-.auth-form button {
+.checkbox-container2 span {
+  position: relative;
+  right: 18%;
+  text-align: left;
   width: 100%;
-  padding: 10px;
-  background-color: First Name; /* Green color for button */
+  font-size: 16px;
+  font-family: "Darker Grotesque", sans-serif;
+  font-weight: 500;
+}
+
+.checkbox-container2 a {
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #0e9061;
+  width: 100%;
+  left: 30%;
+  text-align: right;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
   color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Darker Grotesque", sans-serif;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  background-color: #0E9061;
+  background-color: #0e9061;
 }
 
-.auth-form .or-divider {
+button:hover{
+  background-color: white;
+  color: #0e9061;
+  border: 2px solid #0e9061;
+}
+
+.or-divider {
   margin: 20px 0;
   display: flex;
   align-items: center;
+  color: #ccc;
 }
 
-.auth-form .or-divider hr {
+.or-divider hr {
   flex-grow: 1;
   height: 1px;
   background-color: #ccc;
   border: none;
 }
 
-.auth-form .or-text {
-  margin: 0 10px;
-  color: #666;
+.or-text {
+  margin: 0 20px;
+  color: #000;
   text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Comfortaa", sans-serif;
 }
 
 /* AuthForm.css */
 /* ... (Previous styles) */
 
-.auth-form .google-signup {
-  border: 2px solid #0E9061;
+.google-signup {
+  border: 2px solid #0e9061;
   padding: 10px;
   display: flex;
   align-items: center;
@@ -115,20 +194,29 @@
   margin-bottom: 15px;
 }
 
-.auth-form .google-signup a {
+.google-signup a {
   margin-left: 10px;
   text-decoration: none;
-  color: #333;
-  cursor: pointer;
+  color: #13A23B;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 
 
-.auth-form .google-signup .fa-google {
-  color: #4285f4; /* Google's official blue color */
-  font-size: 20px;
+.login p {
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  text-align: center;
 }
 
-
-
-
+.login a {
+  font-family: "Darker Grotesque", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0e9061;
+  text-decoration: none;
+}

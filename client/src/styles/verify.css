@@ -1,0 +1,40 @@
+@import url("https://fonts.cdnfonts.com/css/commissioner-2");
+@import url("https://fonts.cdnfonts.com/css/comfortaa-3");
+@import url("https://fonts.cdnfonts.com/css/darker-grotesque");
+
+.verify {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+.verify-body {
+  margin-top: 10%;
+  text-align: center;
+}
+
+.verify-body h2 {
+  font-family: "Commissioner", sans-serif;
+  font-size: 25px;
+  color: #0e9061;
+  font-weight: 700;
+}
+
+.verify-body p {
+  font-family: "Darker Grotesque", sans-serif;
+  font-family: 20px;
+  font-weight: 500;
+  color: #000;
+}
+
+.verify-body img {
+  max-width: 100%; /* Ensure the image doesn't exceed its natural size */
+  max-height: 100%; /* Ensure the image doesn't exceed its natural size */
+}
+
+.verify-body button{
+  width: 40%;
+}

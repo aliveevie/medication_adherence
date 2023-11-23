@@ -23,7 +23,7 @@ app.post('/api/patient/register', async (req, res) => {
 
 app.post('/api/doctor/register', async (req, res) => {
     const {firstName, lastName, email, password} = req.body;
-    const result = await db.query('SELECT doctor_id FROM patients WHERE email=$1', [email]);
+    const result = await db.query('SELECT doctor_id FROM doctors WHERE email=$1', [email]);
 
     if(result.rows.length===0){
         db.query('INSERT INTO doctors(first_name, last_name, email, password) VALUES($1, $2, $3, $4)', [firstName, lastName, email, password]);

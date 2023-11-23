@@ -8,7 +8,7 @@ import Confirmation from './confimationLink';
 const PatientSignUp = (props) => {
 
   const { api } = props;
-  console.log(api)
+ 
 
   const [showLogin, setShowLogin] = useState(false);
   const [confirmation, setConfirmation] = useState(false);

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../styles/patient.css'
 import logo from '../icons/logo2.svg'
 import PatientSignUp from '../pages/patientReg';
-import DoctorLogin from '../pages/doctorlogin';
 
 export default function Patient() {
 
@@ -16,7 +15,7 @@ export default function Patient() {
   }
 
   function handleDoctorRegister(){
-      setShowDoctor(true);
+      setShowPatient(true);
       setApi('/api/doctor/register');
   }
 
@@ -44,8 +43,6 @@ export default function Patient() {
     )}
 
     {showPatient && <PatientSignUp api={api} /> }
-
-    {showDoctor && <DoctorLogin  api={api} /> }
 
     </>
   

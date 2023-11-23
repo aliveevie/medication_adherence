@@ -51,7 +51,7 @@
   .dash-body {
     background-color: #c0f8da;
     border-radius: 5%;
-    margin: 10% 3%;
+   
   }
   
   .dash-icon {
@@ -61,7 +61,7 @@
   .dash-text {
     padding: 20px;
     border-radius: 8px;
-    margin-left: 5%;
+  
     margin-top: -15%;
   }
   
@@ -88,6 +88,7 @@
   
     .dash-body {
       display: block;
+      margin: 10% 10%;
     }
   
     .dash-text {

@@ -11,6 +11,7 @@ import VerticalComponent from './dashboard/verticalComponent';
 
 const Dashboard = (props) => {
   const { name } = props;
+  let vertical = false;
 
   const getWindowDimensions = () => {
     const { innerWidth: width } = window;
@@ -19,7 +20,6 @@ const Dashboard = (props) => {
     };
   };
 
-  getWindowDimensions()
 
   const [windowDimensions, setWindowDimensions] = React.useState(
     getWindowDimensions()
@@ -37,6 +37,7 @@ const Dashboard = (props) => {
 
 
   return (
+
     <div className="dashboard">
       {windowDimensions.width < 800 ? <MobileHeader  name={name} /> : <DeskTopHeader />}
       <div className='dash-body' >
@@ -52,7 +53,7 @@ const Dashboard = (props) => {
       <div className='dash-heart' >
           <img src={heart} alt='The Heart'  />
       </div>
-      <VerticalComponent />
+     
     </div>
   );
 };

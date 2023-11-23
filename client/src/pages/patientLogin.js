@@ -4,11 +4,18 @@ import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
 import PatientSignUp from './patientReg';
 import ResetVerification from './verificationLink';
+import Dashboard from './dashboard';
 
 const PatientLogin = (props) => {
 
   const { api2 } = props;
-  console.log(api2);
+
+  const [error, setError] = useState('');
+  const [dashboard, setDashboard] = useState(false);
+
+  const [signup, setSignUp] = useState(false);
+  const [reset, setReset] = useState(false);
+
 
   const [signupData, setSignupData] = useState({
     email: ''
@@ -22,14 +29,49 @@ const PatientLogin = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add signup logic here
     
+    try {
+      const response = await fetch(api2, {
+        method: 'POST', // or 'PUT' or 'PATCH' depending on your API
+        headers: {
+          'Content-Type': 'application/json',
+          // Add any other headers required by your API
+        },
+        body: JSON.stringify(signupData),
+      });
+      
+      if (!response.ok) {
+        // Handle error responses from the server
+        console.error('Error:', response.statusText);
+        // Optionally show an error message to the user
+      
+        return;
+      }
+  
+      const responseData = await response.json();
+     
+      setError(responseData.Error)
+
+      if(responseData.Error=='Success'){
+        setDashboard(true)
+        setSignUp(false);
+      }
+  
+      // Depending on your API response, you can handle success or show a confirmation message
+     
+     
+    } catch (error) {
+      console.error('Error:', error.message);
+      // Handle other errors, such as network errors
+      // Optionally show an error message to the user
+    }
   };
 
-  const [signup, setSignUp] = useState(false);
-  const [reset, setReset] = useState(false);
+
+  
+
 
   function handleShowSignUp(){
         setSignUp(true);
@@ -42,7 +84,7 @@ const PatientLogin = (props) => {
   return (
    <>
    {!signup && !reset && (
-     <form className="auth-form" onSubmit={handleSubmit} method="post" action="/">
+     <form className="auth-form" onSubmit={handleSubmit} method="post">
      <img src={logo} alt="logo" />
      <div className='form-header' >
          <h2>Welcome to MedEase</h2>
@@ -78,6 +120,7 @@ const PatientLogin = (props) => {
        <input type="checkbox" /><span>Remember Password</span>
        <a href='#' onClick={handleReset} >Forgot Password</a>
      </div>
+       <div className='error'>{error}</div>
      <button type="submit">Sign</button>
      <div className="or-divider">
        <hr />
@@ -105,6 +148,9 @@ const PatientLogin = (props) => {
     {signup && !reset && <PatientSignUp /> }
 
     {!signup && reset && <ResetVerification />}
+
+    {dashboard && !signup  && <Dashboard /> }
+
 
 
    </>

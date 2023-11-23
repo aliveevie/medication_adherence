@@ -3,6 +3,10 @@
 .dashboard {
     font-family: 'Arial', sans-serif;
   }
+
+  .dashboard img{
+    cursor: pointer;
+  }
   
   .dash-header {
     background-color: #0e9061;
@@ -36,13 +40,16 @@
     font-size: 1.2em;
   }
   
+
   .Settings {
     display: flex;
     align-items: center;
     font-size: 1.2em;
   }
   
+  
   .dash-body {
+    text-align: center;
     padding: 20px;
     background-color: #c0f8da;
   }
@@ -53,7 +60,6 @@
   }
   
   .dash-text {
-   
     padding: 20px;
     border-radius: 8px;
     margin-left: 15px;
@@ -70,8 +76,8 @@
   }
   
   .dash-heart img {
-    width: 60px;
-    height: 60px;
+    max-width: 400px;
+    width: 100%;
   }
   
   /* Responsive Styles */
@@ -91,5 +97,11 @@
     .desktop-nav {
       gap: 40px;
     }
+  }
+
+  .mobile-header{
+    background-color: #0e9061;
+    display: flex;
+    justify-content: space-evenly;
   }
   

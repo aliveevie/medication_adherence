@@ -60,17 +60,28 @@ app.post('/api/patient/login', async (req, res) => {
     });
 
 app.post('/api/patient/appointment', async (req, res) => {
-        const { doctorName, doctorEmail, calendar, time, patientEmail } = req.body;
+        const { doctorName, calendar, time, patientEmail } = req.body;
 
         const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
         [patientEmail])
         const patient_id = result.rows[0].patient_id;
         
-        const insert = await db.query('INSERT INTO patients_doctor(patient_id, doctorName, doctorEmail, calendar, time) VALUES($1, $2, $3, $4, $5)',
-        [patient_id, doctorName, doctorEmail, calendar, time])
-        
-        
-})
+        const insertNew = await db.query('SELECT doctorName, calendar, time FROM patients_doctor WHERE patient_id=$1', 
+        [patient_id])
+       
+
+        if(insertNew.rows.length == 0){
+            db.query('INSERT INTO patients_doctor(patient_id, doctorName, calendar, time) VALUES($1, $2, $3, $4)',
+            [patient_id, doctorName, calendar, time])
+            .then(() =>   db.query('SELECT doctorName, calendar, time FROM patients_doctor WHERE patient_id=$1', 
+            [patient_id])).then((data) => res.json(data.rows[0])); 
+        }else{
+            res.json(insertNew.rows[0]);
+        }
+
+       
+});
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));

@@ -13,14 +13,12 @@ export default function Appointment(props) {
       
         // Extract data from the form
         const doctorName = event.target.doctorName.value;
-        const doctorEmail = event.target.doctorEmail.value;
         const calendar = event.target.calendar.value;
         const time = event.target.time.value;
         const patientEmail = email
         // Prepare the data to be sent in the request body
         const data = {
           doctorName,
-          doctorEmail,
           calendar,
           time,
           patientEmail
@@ -73,12 +71,11 @@ export default function Appointment(props) {
                   <form method='post' onSubmit={handleSubmit}>
                     <label htmlFor="doctorName">
                       Doctor Name
-                      <input type='text' name="doctorName" />
+                      <input type='text' name="doctorName" 
+                      placeholder='Type'
+                      />
                     </label>
-                    <label htmlFor="doctorEmail">
-                     Doctor Email
-                      <input type='email' name="doctorEmail" />
-                    </label>
+                  
                     <label htmlFor="calendar">
                       Date
                       <input

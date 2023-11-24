@@ -7,7 +7,13 @@ import VerticalComponent from './verticalComponent';
 
 function MobileHeader(props){
    
-    const { name, email, showApment, handleShowApment, hideAppointment, handleHideAppoint } = props;
+    const { 
+        name, email, showApment, 
+        handleShowApment, 
+        hideAppointment, 
+        handleHideAppoint,
+        showAdd, handleAddMed
+         } = props;
 
     const [closeMenu, setClose] = useState(false);
 
@@ -32,6 +38,8 @@ function MobileHeader(props){
             handleShowApment={handleShowApment}
             handleHideAppoint={handleHideAppoint}
             hideAppointment={hideAppointment}
+            showAdd={showAdd}
+            handleAddMed={handleAddMed}
 
             /> }  
 

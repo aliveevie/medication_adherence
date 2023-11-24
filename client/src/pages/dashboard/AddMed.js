@@ -5,15 +5,12 @@ import Medication from './Medication';
 
 export default function AddMed(props) {
 
-  
+    const { email, name, showAdd, handleAddMed } = props;
     const [selectedTime, setSelectedTime] = useState('');
-    const { email, name } = props;
+    console.log(showAdd)
     
     const handleSubmit = async (event) => {
         event.preventDefault();
-      
-       
-      
         try {
           // Make a POST request to the API endpoint
           const response = await fetch('', {
@@ -50,56 +47,52 @@ export default function AddMed(props) {
     setSelectedDate(event.target.value);
   };
 
- 
-
   return (
     <>
-                <div className='Appointment'>
-                <div className='back-arrow'>
-                  <img src={back} alt='back arrow'  />
-                </div>
-                <div className='doctor-name'>
-                  <form method='post' onSubmit={handleSubmit}>
-                    <label htmlFor="doctorName">
-                      Name of Medication
-                      <input type='text' name="medicationName" 
-                      placeholder='Type'
-                      />
-                    </label>
-                  
-                    <label htmlFor="dose">
-                      Number of Dosage
-                      <input type='number' name="medicationName" 
-                      placeholder='Type a Number'
-                      />
-                    </label>
+          {showAdd && (
+               <div className='Appointment'>
+               <div className='back-arrow' onClick={handleAddMed} >
+                 <img src={back} alt='back arrow'  />
+               </div>
+               <div className='doctor-name'>
+                 <form method='post' onSubmit={handleSubmit}>
+                   <label htmlFor="doctorName">
+                     Name of Medication
+                     <input type='text' name="medicationName" 
+                     placeholder='Type'
+                     />
+                   </label>
+                 
+                   <label htmlFor="dose">
+                     Number of Dosage
+                     <input type='number' name="medicationName" 
+                     placeholder='Type a Number'
+                     />
+                   </label>
 
-
-                    <label htmlFor="doctorName">
-                      Duration
-                      <input type='number' name="medicationName" 
-                      placeholder='Type Number of Days'
-                      />
-                    </label>
-                  
-                    <label htmlFor="time">
-                      <h3>Add Reminder</h3>
-                      <div className='time-input'>
-                        <input type='time' name='time' />
-                        
-                        <div className='save' style={{ backgroundColor: selectedTime ? '#2ecc71' : 'transparent' }}>
-                          <p>{selectedTime}</p>
-                        </div>
-                      </div>
-                    </label>
-                    <button type='submit'>Add</button>
-                  </form>
-                </div>
-              </div> 
-       
-
-        
-        
+                   <label htmlFor="doctorName">
+                     Duration
+                     <input type='number' name="medicationName" 
+                     placeholder='Type Number of Days'
+                     />
+                   </label>
+                 
+                   <label htmlFor="time">
+                     <h3>Add Reminder</h3>
+                     <div className='time-input'>
+                       <input type='time' name='time' />
+                       
+                       <div className='save' style={{ backgroundColor: selectedTime ? '#2ecc71' : 'transparent' }}>
+                         <p>{selectedTime}</p>
+                       </div>
+                     </div>
+                   </label>
+                   <button type='submit'>Add</button>
+                 </form>
+               </div>
+             </div> 
+          )}
+             
     </>
     
   );

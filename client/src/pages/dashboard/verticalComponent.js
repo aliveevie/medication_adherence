@@ -11,8 +11,15 @@ import xxx from '../../icons/xxx.svg';
 import AddMed from './AddMed';
 
 function VerticalComponent(props) {
-  const { closeMenu, handleClose, showApment, handleShowApment, hideAppointment, handleHideAppoint,  } = props;
+
+  const { 
+      closeMenu, handleClose, showApment, 
+      handleShowApment, handleAddMed, showAdd
+    } = props;
+    console.log(props)
+
   const [showMed, setShowMed] = useState(false);
+
 
   function handleMed() {
     setShowMed(!showMed);
@@ -32,7 +39,7 @@ function VerticalComponent(props) {
               <img src={home} alt='Home Icon' />
               Home
             </div>
-            <div className='side' onClick={handleShowApment}>
+            <div className='side' onClick={handleAddMed} >
               <img src={addMed} alt='AddMed Icon' />
               AddMed
             </div>
@@ -45,7 +52,7 @@ function VerticalComponent(props) {
               <img src={complete} alt='Active Med Icon' />
               Complete Med
             </div>
-            <div className='side'>
+            <div className='side'  onClick={handleShowApment}>
               <img src={addAppoint} alt='Add Appointment Icons' />
               Add Appointment
             </div>

@@ -42,6 +42,7 @@ const Dashboard = (props) => {
   
   function handleAddMed(){
       setShowAdd(!showAdd)
+      console.log('You clicked and not showing!')
   }
 
 
@@ -50,7 +51,7 @@ const Dashboard = (props) => {
   }
 
    function handleShowApment(){
-          setShowApment(true)
+          setShowApment(true)  
    }
 
   return (
@@ -66,7 +67,7 @@ const Dashboard = (props) => {
 
           /> : <DeskTopHeader />}
         
-          {!showApment && (
+          {!showApment && !showAdd && (
          
             <><div className='dash-body'>
             <div className='dash-icon'>
@@ -82,7 +83,7 @@ const Dashboard = (props) => {
             )}
       </div>
       
-        {showApment && <Appointment 
+        {showApment && !showAdd && <Appointment 
         showApment={showApment} 
         handleShowApment={handleShowApment} 
         name={name} 
@@ -90,7 +91,10 @@ const Dashboard = (props) => {
         handleHideAppoint={handleHideAppoint}
         />}
 
-        {showAdd && !showApment && <AddMed /> }
+       {showAdd &&  !showApment && <AddMed
+       handleAddMed={handleAddMed}
+       showAdd={showAdd}
+       />}
       </>
   );
 };

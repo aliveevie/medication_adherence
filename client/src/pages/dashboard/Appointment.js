@@ -7,7 +7,7 @@ export default function Appointment(props) {
 
   
     const [selectedTime, setSelectedTime] = useState('');
-    const { showApment, handleShowApment, email, name } = props;
+    const { showApment, handleShowApment, email, name, handleHideAppoint } = props;
     const [dName, setDName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -83,7 +83,7 @@ export default function Appointment(props) {
         {showApment && !hide && (
                 <div className='Appointment'>
                 <div className='back-arrow'>
-                  <img src={back} alt='back arrow' onClick={handleShowApment} />
+                  <img src={back} alt='back arrow' onClick={handleHideAppoint} />
                 </div>
                 <div className='doctor-name'>
                   <form method='post' onSubmit={handleSubmit}>
@@ -91,6 +91,7 @@ export default function Appointment(props) {
                       Doctor Name
                       <input type='text' name="doctorName" 
                       placeholder='Type'
+                      required
                       />
                     </label>
                   
@@ -99,12 +100,15 @@ export default function Appointment(props) {
                       <input
                           type="date"
                           name='calendar'
+                          required
                 />
                     </label>
                     <label htmlFor="time">
                       Time
                       <div className='time-input'>
-                        <input type='time' name='time' />
+                        <input type='time' name='time'
+                        required
+                        />
                       
                         <div className='save' style={{ backgroundColor: selectedTime ? '#2ecc71' : 'transparent' }}>
                           <p>{selectedTime}</p>

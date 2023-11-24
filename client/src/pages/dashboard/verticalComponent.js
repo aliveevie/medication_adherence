@@ -11,7 +11,7 @@ import xxx from '../../icons/xxx.svg';
 import AddMed from './AddMed';
 
 function VerticalComponent(props) {
-  const { closeMenu, handleClose } = props;
+  const { closeMenu, handleClose, showApment, handleShowApment, hideAppointment, handleHideAppoint,  } = props;
   const [showMed, setShowMed] = useState(false);
 
   function handleMed() {
@@ -20,11 +20,11 @@ function VerticalComponent(props) {
 
   return (
     <>
-      {closeMenu  && !showMed && (
-        <div className='vertical'>
+      {closeMenu  && (
+        <div className='vertical'  onClick={handleClose}>
           <div className='vertical-logos'>
             <img src={logo} alt='logo' />
-            <img src={xxx} alt='vertical logo'  onClick={handleClose} />
+            <img src={xxx} alt='vertical logo'  />
           </div>
 
           <nav className='side-bar'>
@@ -32,7 +32,7 @@ function VerticalComponent(props) {
               <img src={home} alt='Home Icon' />
               Home
             </div>
-            <div className='side' onClick={handleMed}>
+            <div className='side' onClick={handleShowApment}>
               <img src={addMed} alt='AddMed Icon' />
               AddMed
             </div>
@@ -57,7 +57,7 @@ function VerticalComponent(props) {
         </div>
       )}
 
-        {showMed && <AddMed />}
+      
     </>
   );
 }

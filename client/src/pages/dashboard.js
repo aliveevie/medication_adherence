@@ -8,10 +8,13 @@ import '../styles/dashboard.css';
 import DeskTopHeader from './dashboard/Desktop';
 import MobileHeader from './dashboard/mobileheader';
 import Appointment from './dashboard/Appointment';
+import AddMed from './dashboard/AddMed';
+
+
 
 const Dashboard = (props) => {
   const { name, email } = props;
-  let vertical = false;
+  
 
   const getWindowDimensions = () => {
     const { innerWidth: width } = window;
@@ -35,17 +38,37 @@ const Dashboard = (props) => {
   }, []);
 
   const [showApment, setShowApment] = useState(false);
+  const [showAdd, setShowAdd] = useState(false)
+  
+  function handleAddMed(){
+      setShowAdd(!showAdd)
+  }
+
+
+  function handleHideAppoint(){
+        setShowApment(false)
+  }
+
    function handleShowApment(){
-          setShowApment(!showApment)
+          setShowApment(true)
    }
 
   return (
-      <div className="dashboard">
-    {windowDimensions.width < 800 ? <MobileHeader name={name} /> : <DeskTopHeader />}
-  
-     {!showApment ? (
-    <>
-      <div className='dash-body'>
+      <>
+        <div className="dashboard">
+          {windowDimensions.width < 800 ? <MobileHeader 
+          name={name} 
+          email={email}
+          showApment={showApment}
+          handleShowApment={handleShowApment}
+          handleHideAppoint={handleHideAppoint}
+          handleAddMed={handleAddMed}
+
+          /> : <DeskTopHeader />}
+        
+          {!showApment && (
+         
+            <><div className='dash-body'>
             <div className='dash-icon'>
               <img src={plus} alt='Plus Icon' onClick={handleShowApment} />
             </div>
@@ -53,15 +76,22 @@ const Dashboard = (props) => {
               <h2>Hello {name}! Welcome</h2>
               <p>Let’s help remind you about your next appointment with your doctor</p>
             </div>
-          </div>
-          <div className='dash-heart'>
+          </div><div className='dash-heart'>
               <img src={heart} alt='The Heart' />
-          </div>
-  </>
-  ) : (
-    <Appointment showApment={showApment} handleShowApment={handleShowApment} name={name} email={email} />
-  )}
+            </div></>
+            )}
       </div>
+      
+        {showApment && <Appointment 
+        showApment={showApment} 
+        handleShowApment={handleShowApment} 
+        name={name} 
+        email={email} 
+        handleHideAppoint={handleHideAppoint}
+        />}
+
+        {showAdd && !showApment && <AddMed /> }
+      </>
   );
 };
 export default Dashboard;

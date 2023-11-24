@@ -12,6 +12,7 @@ const PatientSignUp = (props) => {
   const [showLogin, setShowLogin] = useState(false);
   const [dashboard, setDashboard] = useState(false);
   const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
 
   function handleLogin() {
@@ -61,6 +62,7 @@ const PatientSignUp = (props) => {
       if(responseData.name){
           setName(responseData.name);
           setDashboard(true)
+          setEmail(responseData.email)
       }
 
       
@@ -163,7 +165,7 @@ const PatientSignUp = (props) => {
 
     {showLogin && !dashboard && <PatientLogin  api2={api2} />}
 
-    {!showLogin && dashboard && <Dashboard  name={name} />}
+    {!showLogin && dashboard && <Dashboard  name={name} email={email} />}
 
     </>
   );

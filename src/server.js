@@ -17,7 +17,7 @@ app.post('/api/patient/register', async (req, res) => {
 
         if(result.rows.length===0){
             db.query('INSERT INTO patients(first_name, last_name, email, password) VALUES($1, $2, $3, $4)', [firstName, lastName, email, password])
-            .then(() => res.json({name:firstName}))
+            .then(() => res.json({name:firstName, email:email}))
         }else{
             res.json({Error:'User Already Exist!'})
             return;
@@ -31,7 +31,7 @@ app.post('/api/doctor/register', async (req, res) => {
 
     if(result.rows.length===0){
         db.query('INSERT INTO doctors(first_name, last_name, email, password) VALUES($1, $2, $3, $4)', [firstName, lastName, email, password])
-        .then(() => res.json({name:firstName}))
+        .then(() => res.json({name:firstName, email:email}))
     }else{
         res.json({Error:'User Already Exist!'})
         return;
@@ -45,7 +45,7 @@ app.post('/api/doctor/login', async (req, res) => {
         if(result.rows.length===0){
             res.json({Error: 'Invalid Username or password'});
         }else{
-            res.json({name: result.rows[0].first_name});
+            res.json({name: result.rows[0].first_name, email:result.rows[0].email});
         }
 });
 
@@ -55,12 +55,12 @@ app.post('/api/patient/login', async (req, res) => {
         if(result.rows.length===0){
             res.json({Error: 'Invalid Username or password'});
         }else{
-            res.json({name: result.rows[0].first_name});
+            res.json({name: result.rows[0].first_name, email:result.rows[0].email});
         }
     });
 
 app.post('/api/patient/appointment', async (req, res) => {
-    console.log(req.body)
+        console.log(req.body)
 })
 
 app.get('/', (req, res) => {

@@ -59,8 +59,9 @@
   }
   
   .dash-text {
-    padding: 20px;
+    padding: 10px;
     border-radius: 8px;
+    font-size: 80%;
   }
   
   .dash-text h2 {
@@ -72,6 +73,7 @@
     justify-content: center;
     margin-top: 20px;
   }
+  
   
   .dash-heart img {
     max-width: 400px;

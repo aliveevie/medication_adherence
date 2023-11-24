@@ -1,0 +1,46 @@
+/* appointment.css */
+
+.Appointment {
+    padding: 20px;
+  }
+  
+  .back-arrow {
+    cursor: pointer;
+  }
+  
+  .doctor-name {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-label {
+    background-color: grey;
+    padding: 5px;
+    display: inline-block;
+  }
+  
+  .time-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .add button {
+    margin-left: 10px;
+  }
+  
+  .save {
+    background-color: #2ecc71;
+    padding: 5px;
+    margin-left: 10px;
+    display: inline-block;
+  }
+  
+  .save p {
+    margin: 0;
+    color: white;
+  }
+  

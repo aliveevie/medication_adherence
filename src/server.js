@@ -59,6 +59,10 @@ app.post('/api/patient/login', async (req, res) => {
         }
     });
 
+app.post('/api/patient/appointment', async (req, res) => {
+    console.log(req.body)
+})
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
 });

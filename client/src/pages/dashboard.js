@@ -59,7 +59,7 @@ const Dashboard = (props) => {
           </div>
   </>
   ) : (
-    <Appointment />
+    <Appointment showApment={showApment} handleShowApment={handleShowApment} />
   )}
       </div>
   );

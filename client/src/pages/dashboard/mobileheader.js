@@ -19,7 +19,7 @@ function MobileHeader(props){
             <img  src={hamb} alt='Hamburger Menu'  onClick={handleClose} />
             <img  src={small} alt='Small Icons' />
             <p   className='name'>{name.slice(0, 2)}</p>
-          {closeMenu && <VerticalComponent /> }  
+          {closeMenu && <VerticalComponent  closeMenu={closeMenu} handleClose={handleClose}   /> }  
 
         </div>
     );

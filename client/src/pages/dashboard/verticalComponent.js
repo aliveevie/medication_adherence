@@ -9,21 +9,19 @@ import '../../styles/vertical.css';
 import xxx from '../../icons/xxx.svg';
 import { useState } from 'react';
 
-function VerticalComponent(){
+function VerticalComponent(props){
+
+    const { closeMenu, handleClose } = props;
 
     
-    const [close, setClose] = useState(true);
-     function handleVertical(){
-        setClose(!close)
-     }
    
     return (
         <>
-            {close && (
+            {closeMenu && (
                  <div className='vertical' >
                  <div className='vertical-logos' >
                      <img src={logo} alt='logo' />
-                     <img src={xxx} alt="vertical logo"  onClick={handleVertical} />
+                     <img src={xxx} alt="vertical logo"  onClick={handleClose} />
                  </div>
                 
              <nav className='side-bar' >

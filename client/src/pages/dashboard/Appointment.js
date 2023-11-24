@@ -4,7 +4,9 @@ import '../../styles/appointment.css';
 
 export default function Appointment() {
   const [selectedTime, setSelectedTime] = useState('');
-  
+  const [hideAppointment, setHideAppointment] = useState(false);
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // You can add logic here to submit the form data to the specified API endpoint.
@@ -17,10 +19,15 @@ export default function Appointment() {
     setSelectedDate(event.target.value);
   };
 
+  function handleAppointment(){
+            setHideAppointment(!hideAppointment);
+  }
+
   return (
-    <div className='Appointment'>
+    <>
+        {!hideAppointment && <div className='Appointment'>
       <div className='back-arrow'>
-        <img src={back} alt='back arrow' />
+        <img src={back} alt='back arrow' onClick={handleAppointment} />
       </div>
       <div className='doctor-name'>
         <form method='post' onSubmit={handleSubmit}>
@@ -55,6 +62,8 @@ export default function Appointment() {
           <button type='submit'>Save</button>
         </form>
       </div>
-    </div>
+    </div> }
+    </>
+    
   );
 }

@@ -34,27 +34,34 @@ const Dashboard = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-
+  const [showApment, setShowApment] = useState(false);
+   function handleShowApment(){
+          setShowApment(!showApment)
+   }
 
   return (
-
-    <div className="dashboard">
-      {windowDimensions.width < 800 ? <MobileHeader  name={name} /> : <DeskTopHeader />}
-      <div className='dash-body' >
-        <div className='dash-icon' >
-          <img src={plus}  alt='Plus Icon' />
-        </div>
-        <div className='dash-text' >
-            <h2>Hello {name}! Welcome</h2>
-            <p>let’s help remind you about your 
-              next appointment with your doctor</p>
+      <div className="dashboard">
+    {windowDimensions.width < 800 ? <MobileHeader name={name} /> : <DeskTopHeader />}
+  
+     {!showApment ? (
+    <>
+      <div className='dash-body'>
+            <div className='dash-icon'>
+              <img src={plus} alt='Plus Icon' onClick={handleShowApment} />
+            </div>
+            <div className='dash-text'>
+              <h2>Hello {name}! Welcome</h2>
+              <p>Let’s help remind you about your next appointment with your doctor</p>
+            </div>
           </div>
+          <div className='dash-heart'>
+              <img src={heart} alt='The Heart' />
+          </div>
+  </>
+  ) : (
+    <Appointment />
+  )}
       </div>
-      <div className='dash-heart' >
-          <img src={heart} alt='The Heart'  />
-      </div>
-      <Appointment />
-    </div>
   );
 };
 export default Dashboard;

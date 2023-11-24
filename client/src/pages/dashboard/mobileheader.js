@@ -12,7 +12,8 @@ function MobileHeader(props){
         handleShowApment, 
         hideAppointment, 
         handleHideAppoint,
-        showAdd, handleAddMed
+        showAdd, handleAddMed,
+        hideAddMed
          } = props;
 
     const [closeMenu, setClose] = useState(false);
@@ -40,7 +41,7 @@ function MobileHeader(props){
             hideAppointment={hideAppointment}
             showAdd={showAdd}
             handleAddMed={handleAddMed}
-
+            hideAddMed={hideAddMed}
             /> }  
 
         </div>

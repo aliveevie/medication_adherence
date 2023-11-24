@@ -5,9 +5,9 @@ import Medication from './Medication';
 
 export default function AddMed(props) {
 
-    const { email, name, showAdd, handleAddMed } = props;
+    const { email, name, showAdd, handleAddMed, hideAddMed } = props;
     const [selectedTime, setSelectedTime] = useState('');
-    console.log(showAdd)
+  
     
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,7 +51,7 @@ export default function AddMed(props) {
     <>
           {showAdd && (
                <div className='Appointment'>
-               <div className='back-arrow' onClick={handleAddMed} >
+               <div className='back-arrow' onClick={hideAddMed} >
                  <img src={back} alt='back arrow'  />
                </div>
                <div className='doctor-name'>

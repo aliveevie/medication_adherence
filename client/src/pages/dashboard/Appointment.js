@@ -6,8 +6,7 @@ export default function Appointment(props) {
 
   
     const [selectedTime, setSelectedTime] = useState('');
-    const { showApment, handleShowApment } = props;
-
+    const { showApment, handleShowApment, email } = props;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -17,14 +16,17 @@ export default function Appointment(props) {
         const doctorEmail = event.target.doctorEmail.value;
         const calendar = event.target.calendar.value;
         const time = event.target.time.value;
-      
+        const patientEmail = email
         // Prepare the data to be sent in the request body
         const data = {
           doctorName,
           doctorEmail,
           calendar,
           time,
+          patientEmail
         };
+
+        console.log(data);
       
         try {
           // Make a POST request to the API endpoint
@@ -74,7 +76,7 @@ export default function Appointment(props) {
                       <input type='text' name="doctorName" />
                     </label>
                     <label htmlFor="doctorEmail">
-                      Email
+                     Doctor Email
                       <input type='email' name="doctorEmail" />
                     </label>
                     <label htmlFor="calendar">
@@ -97,6 +99,7 @@ export default function Appointment(props) {
                     <button type='submit'>Save</button>
                   </form>
                 </div>
+              
               </div> 
         )}
      

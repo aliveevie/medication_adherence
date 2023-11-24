@@ -10,7 +10,7 @@ import MobileHeader from './dashboard/mobileheader';
 import Appointment from './dashboard/Appointment';
 
 const Dashboard = (props) => {
-  const { name } = props;
+  const { name, email } = props;
   let vertical = false;
 
   const getWindowDimensions = () => {
@@ -59,7 +59,7 @@ const Dashboard = (props) => {
           </div>
   </>
   ) : (
-    <Appointment showApment={showApment} handleShowApment={handleShowApment} />
+    <Appointment showApment={showApment} handleShowApment={handleShowApment} name={name} email={email} />
   )}
       </div>
   );

@@ -163,12 +163,15 @@ const PatientSignUp = (props) => {
     </form>
     )}
 
+
     {showLogin && !dashboard && <PatientLogin  api2={api2} />}
+
 
     {!showLogin && dashboard && <Dashboard  name={name} email={email} />}
 
     </>
   );
 };
+
 
 export default PatientSignUp;

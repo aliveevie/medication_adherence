@@ -32,7 +32,6 @@ export default function Medication(props) {
         <div className="active-med">
           <p>Active Medication</p>
         </div>
-        <AddMed  />
       </div>
     </>
   );

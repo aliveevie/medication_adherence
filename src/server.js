@@ -66,20 +66,10 @@ app.post('/api/patient/appointment', async (req, res) => {
         [patientEmail])
         const patient_id = result.rows[0].patient_id;
         
-        const insertNew = await db.query('SELECT doctorName, calendar, time FROM patients_doctor WHERE patient_id=$1', 
-        [patient_id])
-       
-
-        if(insertNew.rows.length == 0){
-            db.query('INSERT INTO patients_doctor(patient_id, doctorName, calendar, time) VALUES($1, $2, $3, $4)',
+        const insertNew = db.query('INSERT INTO patients_doctor(patient_id, doctorName, calendar, time) VALUES($1, $2, $3, $4)',
             [patient_id, doctorName, calendar, time])
             .then(() =>   db.query('SELECT doctorName, calendar, time FROM patients_doctor WHERE patient_id=$1', 
-            [patient_id])).then((data) => res.json(data.rows[0])); 
-        }else{
-            res.json(insertNew.rows[0]);
-        }
-
-       
+            [patient_id])).then((data) => res.json(data.rows[0]));      
 });
 
 

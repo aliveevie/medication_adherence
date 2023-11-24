@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
+import Medication from './Medication';
 
 export default function Appointment(props) {
 
   
     const [selectedTime, setSelectedTime] = useState('');
-    const { showApment, handleShowApment, email } = props;
+    const { showApment, handleShowApment, email, name } = props;
+    const [dName, setDName] = useState('');
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
+    const [hide, setHide] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -24,7 +29,7 @@ export default function Appointment(props) {
           patientEmail
         };
 
-        console.log(data);
+        
       
         try {
           // Make a POST request to the API endpoint
@@ -41,9 +46,22 @@ export default function Appointment(props) {
           if (response.ok) {
             console.log('Appointment data submitted successfully');
             // You can perform additional actions here if needed
+            
           } else {
             console.error('Failed to submit appointment data');
           }
+
+
+          const responseData = await response.json();
+        
+          if(responseData){
+            setDName(responseData.doctorname);
+            setDate(responseData.calendar);
+            setTime(responseData.time);
+            setHide(true);
+          }
+            
+
         } catch (error) {
           console.error('Error submitting appointment data:', error);
         }
@@ -62,7 +80,7 @@ export default function Appointment(props) {
 
   return (
     <>
-        {showApment && (
+        {showApment && !hide && (
                 <div className='Appointment'>
                 <div className='back-arrow'>
                   <img src={back} alt='back arrow' onClick={handleShowApment} />
@@ -96,10 +114,11 @@ export default function Appointment(props) {
                     <button type='submit'>Save</button>
                   </form>
                 </div>
-              
               </div> 
         )}
-     
+
+          {hide &&  <Medication  name={name} dName={dName} time={time} date={date} />}
+        
     </>
     
   );

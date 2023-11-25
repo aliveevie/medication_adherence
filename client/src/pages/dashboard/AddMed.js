@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
-import Medication from './Medication';
+import formatTime from '../../functions/formatTime';
+
 
 export default function AddMed(props) {
 
@@ -72,9 +73,11 @@ export default function AddMed(props) {
         setSelectedTime((prevTimes) => [...prevTimes, medication.time]);
         setMedication({
           ...medication,
-          time: '', // Clear the time input after adding
+        //  time: '', // Clear the time input after adding
         });
       }
+
+      console.log(selectedTime);
 
   return (
     <>
@@ -118,12 +121,17 @@ export default function AddMed(props) {
                         value={medication.time}
                         onChange={handleTimeChange}
                        />
-                      <button type='submit' >Add</button>
+                      <button type='button'
+                      onClick={handleTimeAdd}
+                      >Add</button>
                      </div>
                    </label>
-                   <div className='save' style={{ backgroundColor: selectedTime ? '#2ecc71' : 'transparent' }}>
-                         <p>{selectedTime}</p>
-                       </div>
+                   <div className='save' >
+                    {selectedTime.map((time) => (
+                        <p key={time}  className='times' >{ formatTime(time)}</p>
+                    ))}
+                    </div>
+                    <button type="submit" >Save</button>
                  </form>
                </div>
              </div> 

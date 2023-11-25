@@ -17,6 +17,7 @@ const PatientLogin = (props) => {
   const [reset, setReset] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [id, setId] = useState('');
   const [signupData, setSignupData] = useState({
     email: "",
     password: ""
@@ -52,13 +53,14 @@ const PatientLogin = (props) => {
       }
 
       const responseData = await response.json();
-     
+      
       setError(responseData.Error)
       if (responseData.name) {
         setDashboard(true);
         setSignUp(false);
         setName(responseData.name);
         setEmail(responseData.email);
+        setId(responseData.patient_id);
 }
       // Depending on your API response, you can handle success or show a confirmation message
     } catch (error) {
@@ -145,7 +147,7 @@ const PatientLogin = (props) => {
 
     {!signup && reset &&  !dashboard && <ResetVerification />}
 
-    {dashboard &&  !reset && !signup && <Dashboard  name={name} email={email} /> }
+    {dashboard &&  !reset && !signup && <Dashboard  name={name} email={email}  patient_id={id} /> }
 
    </>
   );

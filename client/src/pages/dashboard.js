@@ -14,7 +14,7 @@ import ActiveMedication from './dashboard/ActiveMed';
 
 
 const Dashboard = (props) => {
-  const { name, email } = props;
+  const { name, email, id } = props;
   const [showApment, setShowApment] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [complete, setComplete] = useState(false);
@@ -98,6 +98,7 @@ const Dashboard = (props) => {
           {windowDimensions.width < 800 ? <MobileHeader 
           name={name} 
           email={email}
+          id={id}
           showApment={showApment}
           handleShowApment={handleShowApment}
           handleHideAppoint={handleHideAppoint}
@@ -129,6 +130,7 @@ const Dashboard = (props) => {
           handleShowApment={handleShowApment} 
           name={name} 
           email={email} 
+          id={id}
           handleHideAppoint={handleHideAppoint}
           />}
 
@@ -138,18 +140,21 @@ const Dashboard = (props) => {
         hideAddMed={hideAddMed}
         name={name}
         email={email}
+        id={id}
         />}
 
         {!showApment && !showAdd  && complete && !active && <CompleteMed 
         handleComplete={handleComplete}
         name={name}
         email={email}
+        id={id}
         />}
 
         {!showApment && !showAdd  && !complete && active && <ActiveMedication
         handleActive={handleActive}
         name={name}
         email={email}
+        id={id}
       />}
 
       </>

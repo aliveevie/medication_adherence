@@ -2,7 +2,8 @@ import React from 'react';
 
 
 export default function ActiveMedication(props) {
-  let { name, dName, date, time, handleActive } = props;
+  const { name, email, id } = props;
+  console.log(props)
 
   const formatDate = (inputDate) => {
     const options = { day: 'numeric', month: 'short' };

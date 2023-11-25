@@ -10,6 +10,7 @@
   max-width: 400px; /* Set a maximum width for the form */
   margin: 0 auto; /* Center the form horizontally */
   margin-top: 5vh; /* Adjust the top margin as needed */
+  margin-bottom: 20px;
 }
 
 .logo {

@@ -1,0 +1,78 @@
+/* appointment.css */
+
+.Appointment {
+    padding: 20px;
+  }
+  
+  .back-arrow {
+    cursor: pointer;
+  }
+  
+  .doctor-name {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-label {
+    background-color: grey;
+    padding: 5px;
+    display: inline-block;
+  }
+  
+  .time-input {
+    display: flex;
+    align-items: center;
+  }
+  
+  .add button {
+    margin-left: 10px;
+  }
+  
+ 
+  
+
+  .radio-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.radio-options {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}
+
+
+.save {
+  padding: 5px;
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.save p {
+  color: white;
+  font-family: 'Commissioner';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 25px;
+}
+
+.times{
+  background-color: #0e9061;
+  border-radius: 15px; 
+  margin-bottom: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+
+}

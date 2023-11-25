@@ -1,4 +1,5 @@
 // SignupForm.js
+
 import React, { useState } from "react";
 import "../styles/AuthForm.css";
 import { Link } from "react-router-dom";
@@ -7,27 +8,28 @@ import PatientLogin from "./patientLogin";
 import Confirmation from "./confimationLink";
 import google from "../icons/google.png";
 import { FaLock, FaLockOpen } from "react-icons/fa";
+import Dashboard from './dashboard';
 
 const PatientSignUp = (props) => {
   const { api, api2 } = props;
-  console.log(api, api2);
+ 
   const [showLogin, setShowLogin] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
-  
+  const [dashboard, setDashboard] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+  const [id, setId] = useState('');
 
   function handleLogin() {
     setShowLogin(true);
   }
 
-  function handleConfirmation() {
-    setConfirmation(true);
-  }
-
   const [signupData, setSignupData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -40,7 +42,6 @@ const PatientSignUp = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setConfirmation(true);
     try {
       const response = await fetch(api, {
         method: "POST", // or 'PUT' or 'PATCH' depending on your API
@@ -60,7 +61,16 @@ const PatientSignUp = (props) => {
       }
 
       const responseData = await response.json();
+     
+      setError(responseData.Error)
+      if(responseData.name){
+          setName(responseData.name);
+          setDashboard(true)
+          setEmail(responseData.email);
+          setId(responseData.patient_id);
+      }
 
+      
       // Depending on your API response, you can handle success or show a confirmation message
       // setShowLogin(true);
     } catch (error) {
@@ -69,6 +79,8 @@ const PatientSignUp = (props) => {
       // Optionally show an error message to the user
     }
   };
+  
+   
 
   const [showPassword, setShowPassword] = useState("");
   const handleTogglePassword = () => {
@@ -77,55 +89,56 @@ const PatientSignUp = (props) => {
 
   return (
     <>
-      {!showLogin && !confirmation && (
-        <form className="auth-form" onSubmit={handleSubmit} method="post">
-          <div className="logo">
+        {!showLogin && !dashboard &&  (
+      <form className="auth-form" onSubmit={handleSubmit} method="post" 
+      >
+       <div className="logo">
             <img src={logo} alt="logo" width={40} height={40} />
             <h3 style={{ color: "#0E9061" }}>
               Med<span style={{ color: "#000000" }}>Ease</span>
             </h3>
           </div>
-          <div className="form-header">
-            <h2>Welcome to MedEase</h2>
-            <p>Create your Account</p>
-          </div>
-
-          <label>
-            First Name
-            <input
-              type="text"
-              name="firstName"
-              value={signupData.firstName}
-              placeholder="First Name"
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <label>
-            Last Name
-            <input
-              type="text"
-              name="lastName"
-              value={signupData.lastName}
-              onChange={handleChange}
-              placeholder="Last Name"
-              required
-            />
-          </label>
-          <label>
-            Email
-            <input
-              type="email"
-              name="email"
-              value={signupData.email}
-              onChange={handleChange}
-              placeholder="Email Address"
-              required
-            />
-          </label>
-          <label>
-            Password
-            <div className="password-input">
+      <div className='form-header' >
+          <h2>Welcome to MedEase</h2>
+          <p>Create your Account</p>
+      </div>
+     
+      <label>
+        First Name
+        <input
+          type="text"
+          name="firstName"
+          value={signupData.firstName}
+          placeholder='First Name'
+          onChange={handleChange}
+          required
+        />
+      </label>
+      <label>
+        Last Name
+        <input
+          type="text"
+          name="lastName"
+          value={signupData.lastName}
+          onChange={handleChange}
+          placeholder='Last Name'
+          required
+        />
+      </label>
+      <label>
+        Email
+        <input
+          type="email"
+          name="email"
+          value={signupData.email}
+          onChange={handleChange}
+          placeholder="Email Address"
+          required
+        />
+      </label>
+      <label>
+        Password
+         <div className="password-input">
               <input
                 type={showPassword ? "text" : "password"}
                 name="password"
@@ -143,20 +156,18 @@ const PatientSignUp = (props) => {
                 {showPassword ? <FaLockOpen /> : <FaLock />}
               </button>
             </div>
-          </label>
-          <div className="checkbox-container">
-            <input type="checkbox" />
-            <span>Remember Password</span>
-          </div>
-
-          <button type="submit">Create Account</button>
-
-          <div className="or-divider">
-            <hr />
-            <span className="or-text">or</span>
-            <hr />
-          </div>
-          <div className="google-signup">
+      </label>
+      <div className="checkbox-container">
+        <input type="checkbox" /><span>Remember Password</span>
+      </div>
+      <button type="submit" >Create Account</button>
+      <div>{error}</div>
+      <div className="or-divider">
+        <hr />
+      <span className="or-text">or</span>
+        <hr />
+      </div>
+     <div className="google-signup">
             <img src={google} width={20} height={20} alt="google" />
             <Link to="/">Sign up With Google</Link>
           </div>
@@ -172,10 +183,14 @@ const PatientSignUp = (props) => {
               </Link>
             </p>
           </div>
-        </form>
-      )}
+    </form>
+    )}
 
-      {showLogin && !confirmation && <PatientLogin api2={api2} />}
+
+    {showLogin && !dashboard && <PatientLogin  api2={api2} />}
+
+
+    {!showLogin && dashboard && <Dashboard  name={name} email={email} id={id} />}
 
       {confirmation && <Confirmation />}
     </>
@@ -183,3 +198,4 @@ const PatientSignUp = (props) => {
 };
 
 export default PatientSignUp;
+

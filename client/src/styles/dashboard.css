@@ -1,0 +1,115 @@
+/* AuthForm.css */
+
+.dashboard {
+    font-family: 'Arial', sans-serif;
+  }
+
+  .dashboard img{
+    cursor: pointer;
+  }
+  
+  .dash-header {
+    background-color: #0e9061;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .desktop-nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .addMed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+  }
+  
+  .addMed img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .profile-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+  
+
+  .Settings {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+  
+  
+  .dash-body {
+    background-color: #c0f8da;
+    border-radius: 5%;
+   
+  }
+  
+  .dash-icon {
+    margin-left: 5%;
+  }
+  
+  .dash-text {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 80%;
+  }
+  
+  .dash-text h2 {
+    margin-bottom: 10px;
+  }
+  
+  .dash-heart {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  
+  .dash-heart img {
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 800px) {
+    .dash-header {
+      padding: 20px;
+    }
+  
+    .dash-body {
+      display: block;
+      margin: 10% 10%;
+    }
+  
+    .dash-text {
+      margin-left: 30px;
+    }
+  
+    .desktop-nav {
+      gap: 40px;
+    }
+  }
+
+  .mobile-header{
+    background-color: #0e9061;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .name{
+    border-radius: 50%;
+    background-color: white;
+    padding: 1%;
+    margin: 3%;
+  }
+  

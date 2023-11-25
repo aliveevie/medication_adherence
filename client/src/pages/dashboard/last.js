@@ -4,10 +4,7 @@ import '../../styles/activemed.css';
 import formatTime from '../../functions/formatTime';
 import icons from '../../icons/icons.svg';
 
-export default function EachMed({ handleCurrent, medication }) {
- 
-
-
+export default function LastComponent({ handleCurrent, medication }) {
   return (
     <div className='activ-med'>
       <img src={back} alt='Medication details' onClick={handleCurrent} />
@@ -20,7 +17,6 @@ export default function EachMed({ handleCurrent, medication }) {
       </div>
       <p>Day 1</p>
       <div className='check-in' >
-        
         <div className='days' >
         <p>{formatTime(medication.time)}</p>
         <p>Check In</p>

@@ -1,18 +1,19 @@
 // SignupForm.js
 import React, { useState } from "react";
 import "../styles/AuthForm.css";
+import { Link } from "react-router-dom";
 import logo from "../icons/logo2.png";
 import PatientLogin from "./patientLogin";
 import Confirmation from "./confimationLink";
-import google from '../icons/google.png'
-
+import google from "../icons/google.png";
+import { FaLock, FaLockOpen } from "react-icons/fa";
 
 const PatientSignUp = (props) => {
-
   const { api, api2 } = props;
   console.log(api, api2);
   const [showLogin, setShowLogin] = useState(false);
   const [confirmation, setConfirmation] = useState(false);
+  
 
   function handleLogin() {
     setShowLogin(true);
@@ -42,45 +43,42 @@ const PatientSignUp = (props) => {
     setConfirmation(true);
     try {
       const response = await fetch(api, {
-        method: 'POST', // or 'PUT' or 'PATCH' depending on your API
+        method: "POST", // or 'PUT' or 'PATCH' depending on your API
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           // Add any other headers required by your API
         },
         body: JSON.stringify(signupData),
       });
-      
+
       if (!response.ok) {
         // Handle error responses from the server
-        console.error('Error:', response.statusText);
+        console.error("Error:", response.statusText);
         // Optionally show an error message to the user
-      
+
         return;
       }
-  
+
       const responseData = await response.json();
-     
-  
+
       // Depending on your API response, you can handle success or show a confirmation message
-     // setShowLogin(true);
-     
+      // setShowLogin(true);
     } catch (error) {
-      console.error('Error:', error.message);
+      console.error("Error:", error.message);
       // Handle other errors, such as network errors
       // Optionally show an error message to the user
     }
   };
 
+  const [showPassword, setShowPassword] = useState("");
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       {!showLogin && !confirmation && (
-        <form
-          className="auth-form"
-          onSubmit={handleSubmit}
-          method="post"
-          
-      
-        >
+        <form className="auth-form" onSubmit={handleSubmit} method="post">
           <div className="logo">
             <img src={logo} alt="logo" width={40} height={40} />
             <h3 style={{ color: "#0E9061" }}>
@@ -129,13 +127,21 @@ const PatientSignUp = (props) => {
             Password
             <div className="password-input">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={signupData.password}
                 onChange={handleChange}
                 placeholder="8 characters"
                 required
               />
+              <button
+                type="button"
+                onClick={handleTogglePassword}
+                className="toggle-password-button"
+                style={{ top: "74%" }}
+              >
+                {showPassword ? <FaLockOpen /> : <FaLock />}
+              </button>
             </div>
           </label>
           <div className="checkbox-container">
@@ -143,39 +149,35 @@ const PatientSignUp = (props) => {
             <span>Remember Password</span>
           </div>
 
-          <button type="submit">
-            Create Account
-          </button>
-          
+          <button type="submit">Create Account</button>
+
           <div className="or-divider">
             <hr />
-          <span className="or-text">or</span>
+            <span className="or-text">or</span>
             <hr />
           </div>
           <div className="google-signup">
             <img src={google} width={20} height={20} alt="google" />
-            <a href="/">Sign up With Google</a>
+            <Link to="/">Sign up With Google</Link>
           </div>
           <div className="login">
             <p>
-              By clicking on “create account” you agree to MedEase <br/>
-              <a href="/">terms and conditions</a>
+              By clicking on “create account” you agree to MedEase <br />
+              <Link to="/">terms and conditions</Link>
             </p>
             <p>
               Already have an account?{" "}
-              <a href="#" onClick={handleLogin}>
+              <Link to="#" onClick={handleLogin}>
                 Sign In
-              </a>
+              </Link>
             </p>
           </div>
-         
         </form>
       )}
 
-      {showLogin && !confirmation && <PatientLogin  api2={api2} />}
+      {showLogin && !confirmation && <PatientLogin api2={api2} />}
 
-    {confirmation && <Confirmation />}
-
+      {confirmation && <Confirmation />}
     </>
   );
 };

@@ -140,7 +140,7 @@ input::placeholder {
   text-align: right;
 }
 
-button {
+.auth-form > button {
   width: 100%;
   padding: 15px;
   color: #fff;
@@ -153,7 +153,7 @@ button {
   background-color: #0e9061;
 }
 
-button:hover{
+.auth-form > button:hover{
   background-color: white;
   color: #0e9061;
   border: 2px solid #0e9061;
@@ -220,3 +220,33 @@ button:hover{
   color: #0e9061;
   text-decoration: none;
 }
+
+
+/*new password page styles*/
+
+.header{
+  text-align: center;
+  margin-bottom: 20%;
+}
+
+.header h2{
+  font-family: 'Commissioner', sans-serif;
+  font-size: 20px;
+  color: #0e9061;
+  font-weight: 700;
+}
+
+.header p{
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+}
+
+.span{
+  font-family: 'Darker Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #000;
+}
+

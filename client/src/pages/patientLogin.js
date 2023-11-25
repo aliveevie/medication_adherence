@@ -7,6 +7,7 @@ import PatientSignUp from "./patientReg";
 import google from "../icons/google.png";
 import ResetVerification from "./verificationLink";
 import Dashboard from "./dashboard";
+import { FaLock, FaLockOpen } from "react-icons/fa";
 
 const PatientLogin = (props) => {
   const { api2 } = props;
@@ -75,6 +76,11 @@ const PatientLogin = (props) => {
     setReset(true);
   }
 
+  const [showPassword, setShowPassword] = useState("");
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <>
       {!signup && !reset && (
@@ -105,13 +111,21 @@ const PatientLogin = (props) => {
             Password
             <div className="password-input">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={signupData.password}
                 onChange={handleChange}
                 placeholder="8 characters"
                 required
               />
+              <button
+                type="button"
+                onClick={handleTogglePassword}
+                className="toggle-password-button"
+                style={{ top: "53%" }}
+              >
+                {showPassword ? <FaLockOpen /> : <FaLock />}
+              </button>
             </div>
           </label>
 

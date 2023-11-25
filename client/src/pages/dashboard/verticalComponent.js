@@ -8,15 +8,17 @@ import complete from '../../icons/complete.svg';
 import setting from '../../icons/setting.svg';
 import '../../styles/vertical.css';
 import xxx from '../../icons/xxx.svg';
-import AddMed from './AddMed';
+
 
 function VerticalComponent(props) {
 
   const { 
-      closeMenu, handleClose, showApment, 
-      handleShowApment, handleAddMed, showAdd
+      closeMenu, handleClose, 
+      handleShowApment, handleAddMed,
+      handleComplete,
+      handleActive,
+      handleHome
     } = props;
-    console.log(props)
 
   const [showMed, setShowMed] = useState(false);
 
@@ -35,8 +37,8 @@ function VerticalComponent(props) {
           </div>
 
           <nav className='side-bar'>
-            <div className='side'>
-              <img src={home} alt='Home Icon' />
+            <div className='side' onClick={handleHome}>
+              <img src={home} alt='Home Icon'  />
               Home
             </div>
             <div className='side' onClick={handleAddMed} >
@@ -44,11 +46,11 @@ function VerticalComponent(props) {
               AddMed
             </div>
 
-            <div className='side'>
+            <div className='side' onClick={handleActive} >
               <img src={activeMed} alt='Active Med Icon' />
               Active Med
             </div>
-            <div className='side'>
+            <div className='side' onClick={handleComplete} >
               <img src={complete} alt='Active Med Icon' />
               Complete Med
             </div>

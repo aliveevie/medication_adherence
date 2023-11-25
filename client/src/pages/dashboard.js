@@ -9,12 +9,16 @@ import DeskTopHeader from './dashboard/Desktop';
 import MobileHeader from './dashboard/mobileheader';
 import Appointment from './dashboard/Appointment';
 import AddMed from './dashboard/AddMed';
-
+import CompleteMed from './dashboard/completeMed';
+import ActiveMedication from './dashboard/ActiveMed';
 
 
 const Dashboard = (props) => {
   const { name, email } = props;
-  
+  const [showApment, setShowApment] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
+  const [complete, setComplete] = useState(false);
+  const [active, setActive] = useState(false);
 
   const getWindowDimensions = () => {
     const { innerWidth: width } = window;
@@ -37,8 +41,7 @@ const Dashboard = (props) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const [showApment, setShowApment] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
+  
   
   function handleAddMed(){
       setShowAdd(true);
@@ -53,9 +56,29 @@ const Dashboard = (props) => {
       setShowApment(true);  
   }
 
+  function handlePlus(){
+      setShowApment(true)
+  }
+
   function hideAddMed(){
         setShowAdd(false);
   }
+
+  function handleComplete(){
+      setComplete(true);
+  }
+
+ function handleActive(){
+      setActive(true)
+ }
+
+ function handleHome(){
+    setActive(false);
+    setComplete(false);
+    setShowAdd(false);
+    setShowApment(false);
+    console.log('You clicked and is not working!')
+ }
 
   return (
       <>
@@ -68,13 +91,16 @@ const Dashboard = (props) => {
           handleHideAppoint={handleHideAppoint}
           handleAddMed={handleAddMed}
           hideAddMed={hideAddMed}
+          handleActive={handleActive}
+          handleComplete={handleComplete}
+          handleHome={handleHome}
           /> : <DeskTopHeader />}
 
-          {!showApment && !showAdd && (
+          {!showApment && !showAdd  && !complete && !active && (
 
             <><div className='dash-body'>
             <div className='dash-icon'>
-              <img src={plus} alt='Plus Icon' onClick={handleShowApment} />
+              <img src={plus} alt='Plus Icon' onClick={handlePlus} />
             </div>
             <div className='dash-text'>
               <h2>Hello {name}! Welcome</h2>
@@ -86,19 +112,32 @@ const Dashboard = (props) => {
             )}
       </div>
       
-        {showApment  && <Appointment 
-        showApment={showApment} 
-        handleShowApment={handleShowApment} 
-        name={name} 
-        email={email} 
-        handleHideAppoint={handleHideAppoint}
+          {showApment && !showAdd  && !complete && !active && <Appointment 
+          showApment={showApment} 
+          handleShowApment={handleShowApment} 
+          name={name} 
+          email={email} 
+          handleHideAppoint={handleHideAppoint}
+          />}
+
+        {!showApment && showAdd  && !complete && !active &&<AddMed
+        handleAddMed={handleAddMed}
+        showAdd={showAdd}
+        hideAddMed={hideAddMed}
         />}
 
-       {showAdd && !showApment && <AddMed
-       handleAddMed={handleAddMed}
-       showAdd={showAdd}
-       hideAddMed={hideAddMed}
-       />}
+        {!showApment && !showAdd  && complete && !active && <CompleteMed 
+        handleComplete={handleComplete}
+        name={name}
+        email={email}
+        />}
+
+        {!showApment && !showAdd  && !complete && active && <ActiveMedication
+        handleActive={handleActive}
+        name={name}
+        email={email}
+      />}
+
       </>
   );
 };

@@ -13,7 +13,10 @@ function MobileHeader(props){
         hideAppointment, 
         handleHideAppoint,
         showAdd, handleAddMed,
-        hideAddMed
+        hideAddMed,
+        handleComplete,
+        handleActive,
+        handleHome
          } = props;
 
     const [closeMenu, setClose] = useState(false);
@@ -30,7 +33,6 @@ function MobileHeader(props){
             <img  src={small} alt='Small Icons' />
             <p   className='name'>{name.slice(0, 2)}</p>
           {closeMenu && <VerticalComponent  
-
             name={name}
             email={email}
             closeMenu={closeMenu} 
@@ -42,7 +44,11 @@ function MobileHeader(props){
             showAdd={showAdd}
             handleAddMed={handleAddMed}
             hideAddMed={hideAddMed}
-            /> }  
+            handleComplete={handleComplete}
+            handleActive={handleActive}
+            handleHome={handleHome}
+            /> 
+        }  
 
         </div>
     );

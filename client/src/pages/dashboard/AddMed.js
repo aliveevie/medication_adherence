@@ -16,7 +16,7 @@ export default function AddMed(props) {
         const medicationName = event.target.medicationName.value
         const dose = event.target.dose.value
         const duration = event.target.duration.value
-        const time = selectedTime;
+        const time = event.target.time.value;
         const patientEmail = email
         
       const data = {
@@ -73,9 +73,17 @@ export default function AddMed(props) {
         setSelectedTime((prevTimes) => [...prevTimes, medication.time]);
         setMedication({
           ...medication,
-          time: '', // Clear the time input after adding
+      //    time: '', // Clear the time input after adding
         });
       }
+
+      const handleDeleteTime = (timeToDelete) => {
+        const updatedTimes = selectedTime.filter((time) => time !== timeToDelete);
+        setSelectedTime(updatedTimes);
+      };
+
+
+
   return (
     <>
           {showAdd && (
@@ -116,17 +124,21 @@ export default function AddMed(props) {
                         name='time' 
                         value={medication.time}
                         onChange={handleTimeChange}
+                        required
                        />
                       <button type='button'
                       onClick={handleTimeAdd}
                       >Add</button>
                      </div>
                    </label>
-                   <div className='save' >
+                   <div className='save'>
                     {selectedTime.map((time) => (
-                        <p key={time}  className='times' >{ formatTime(time)}</p>
+                      <p key={time} className='times'>
+                        {formatTime(time)}
+                        <i className='fas fa-trash-alt' onClick={() => handleDeleteTime(time)}></i>
+                      </p>
                     ))}
-                    </div>
+                </div>
                     <button type="submit" >Save</button>
                  </form>
                </div>

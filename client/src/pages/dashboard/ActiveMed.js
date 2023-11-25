@@ -1,18 +1,16 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../../styles/activemed.css'
-import stop from '../../icons/icons.svg'
+import '../../styles/activemed.css';
+import stop from '../../icons/icons.svg';
+import EachMed from './eachMed';
+import formatTime from '../../functions/formatTime';
 
 export default function ActiveMedication(props) {
   const { name, email, id } = props;
   const [data, setData] = useState([]);
+  const [current, setCurrent] = useState(null);
   
-  const formatTime = (inputTime) => {
-    const [hours, minutes] = inputTime.split(':');
-    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
-    const formattedTime = new Intl.DateTimeFormat('en-US', options).format(new Date(0, 0, 0, hours, minutes));
-    return formattedTime;
-  };
+ 
   
 
 // Empty dependency array means this effect will only run once when the component mounts
@@ -44,23 +42,40 @@ useEffect(() => {
     console.error('Error fetching activemed data:', error);
   }
   }
-  
 
-
+  function handleCurrent(medication){
+      setCurrent(medication)
+  }
 
   return (
-    <div className='activ-med'>
-      <div className="med-list">
-        {data.map((medication) => (
-          <div key={medication.medicationname} className="medication-item" style={{ backgroundColor: '#c0f8da' }}>
-            <h3>{medication.medicationname} - {medication.dose}</h3>
-           <div  className='medication-stop' >
-            <img src={stop} ></img>
-            <p>{formatTime(medication.time)}</p>
-           </div>
+    <>
+      {!current && (
+        <div className='activ-med'>
+          <div className='med-list'>
+            {data.map((medication) => (
+              <div
+                key={medication.medicationname}
+                className='medication-item'
+                style={{ backgroundColor: '#c0f8da' }}
+                onClick={() => handleCurrent(medication)}
+              >
+                <h3>{medication.medicationname} - {medication.dose}</h3>
+                <div className='medication-stop'>
+                  <img src={stop} alt='Stop Icon' />
+                  <p>Today {formatTime(medication.time)}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </div>
+        </div>
+      )}
+
+      {current && (
+        <EachMed
+          medication={current}
+          handleCurrent={() => setCurrent(null)}
+        />
+      )}
+    </>
   );
 }

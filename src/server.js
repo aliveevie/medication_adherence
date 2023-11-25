@@ -89,6 +89,20 @@ app.post('/api/patient/medication', async (req, res) => {
         
 });
 
+app.post('/api/patients/activemed', async (req, res) => {
+    const { patient_id } = req.body;
+    try {
+      const result = await db.query('SELECT medicationname, dose, duration, time FROM addMedications WHERE patient_id=$1', [patient_id]);
+      
+      // Send a valid JSON response to the client
+      res.json(result.rows);
+    } catch (error) {
+      console.error('Error fetching activemed data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build', 'index.html'));

@@ -1,0 +1,33 @@
+/* ActiveMedication.module.css */
+
+.activ-med {
+    margin: 20px;
+  }
+  
+  .med-list {
+    display: block;
+    align-items: left;
+   
+  }
+  
+  .medication-item {
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #c0f8da;
+    margin-bottom: 20px;
+  }
+  
+  .medication-item p {
+    margin: 5px 0;
+  }
+
+  .medication-stop{
+    display: flex;
+  }
+  
+  
+  

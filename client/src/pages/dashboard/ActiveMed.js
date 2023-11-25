@@ -10,17 +10,9 @@ export default function ActiveMedication(props) {
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState(null);
   
- 
-  
-
-// Empty dependency array means this effect will only run once when the component mounts
-
-
 useEffect(() => {
     handleSubmit()
 }, [])
-
-
 
   async function handleSubmit(){
     const patient_id = id; // Replace with the actual patient ID
@@ -74,6 +66,7 @@ useEffect(() => {
         <EachMed
           medication={current}
           handleCurrent={() => setCurrent(null)}
+          current={current}
         />
       )}
     </>

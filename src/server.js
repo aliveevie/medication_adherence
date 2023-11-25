@@ -80,13 +80,21 @@ app.post('/api/patient/appointment', async (req, res) => {
 app.post('/api/patient/medication', async (req, res) => {
         const {medicationName, dose, duration, patientEmail, time }  = req.body;
 
-        const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
-        [patientEmail]);
 
-        const patient_id = result.rows[0].patient_id;
-        const insertResult = db.query('INSERT INTO addMedications(medicationname, dose, duration, patient_id, time) VALUES($1, $2, $3, $4, $5)', 
-        [medicationName, dose, duration, patient_id, time]);
-        
+        try {
+            const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
+            [patientEmail]);
+    
+            const patient_id = result.rows[0].patient_id;
+            const insertResult = db.query('INSERT INTO addMedications(medicationname, dose, duration, patient_id, time) VALUES($1, $2, $3, $4, $5)', 
+            [medicationName, dose, duration, patient_id, time]);
+        }  catch (error) {
+            console.error('Error fetching activemed data:', error);
+            res.status(500).json({ error: 'Internal Server Error' });
+    }
+
+       
+       
 });
 
 app.post('/api/patients/activemed', async (req, res) => {

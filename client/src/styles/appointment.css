@@ -44,3 +44,18 @@
     color: white;
   }
   
+
+  .radio-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.radio-options {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+}

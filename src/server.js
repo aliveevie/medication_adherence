@@ -61,6 +61,7 @@ app.post('/api/patient/login', async (req, res) => {
 
 app.post('/api/patient/appointment', async (req, res) => {
         const { doctorName, calendar, time, patientEmail } = req.body;
+        console.log(req.body)
 
         const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
         [patientEmail])
@@ -70,6 +71,18 @@ app.post('/api/patient/appointment', async (req, res) => {
             [patient_id, doctorName, calendar, time])
             .then(() =>   db.query('SELECT doctorName, calendar, time FROM patients_doctor WHERE patient_id=$1', 
             [patient_id])).then((data) => res.json(data.rows[0]));      
+});
+
+app.post('/api/patient/medication', async (req, res) => {
+        const {medicationName, dose, duration, patientEmail, time }  = req.body;
+
+        const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
+        [patientEmail]);
+
+        const patient_id = result.rows[0].patient_id;
+        const insertResult = db.query('INSERT INTO addMedications(medicationname, dose, duration, patient_id, time) VALUES($1, $2, $3, $4, $5)', 
+        [medicationName, dose, duration, patient_id, time]);
+        
 });
 
 

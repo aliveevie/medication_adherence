@@ -20,6 +20,7 @@ const Dashboard = (props) => {
   const [complete, setComplete] = useState(false);
   const [active, setActive] = useState(false);
 
+
   const getWindowDimensions = () => {
     const { innerWidth: width } = window;
     return {
@@ -45,6 +46,9 @@ const Dashboard = (props) => {
   
   function handleAddMed(){
       setShowAdd(true);
+      setActive(false);
+      setComplete(false);
+      setShowApment(false);
   }
 
 
@@ -53,7 +57,10 @@ const Dashboard = (props) => {
   }
 
   function handleShowApment(){
-      setShowApment(true);  
+      setShowApment(true); 
+      setActive(false);
+      setComplete(false);
+      setShowAdd(false);
   }
 
   function handlePlus(){
@@ -66,10 +73,16 @@ const Dashboard = (props) => {
 
   function handleComplete(){
       setComplete(true);
+      setActive(false);
+      setShowAdd(false);
+      setShowApment(false);
   }
 
  function handleActive(){
       setActive(true)
+      setComplete(false);
+      setShowAdd(false);
+      setShowApment(false);
  }
 
  function handleHome(){
@@ -77,7 +90,6 @@ const Dashboard = (props) => {
     setComplete(false);
     setShowAdd(false);
     setShowApment(false);
-    console.log('You clicked and is not working!')
  }
 
   return (
@@ -124,6 +136,8 @@ const Dashboard = (props) => {
         handleAddMed={handleAddMed}
         showAdd={showAdd}
         hideAddMed={hideAddMed}
+        name={name}
+        email={email}
         />}
 
         {!showApment && !showAdd  && complete && !active && <CompleteMed 

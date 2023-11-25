@@ -16,7 +16,7 @@ export default function AddMed(props) {
         const medicationName = event.target.medicationName.value
         const dose = event.target.dose.value
         const duration = event.target.duration.value
-        const time = event.target.time.value
+        const time = selectedTime;
         const patientEmail = email
         
       const data = {
@@ -73,12 +73,9 @@ export default function AddMed(props) {
         setSelectedTime((prevTimes) => [...prevTimes, medication.time]);
         setMedication({
           ...medication,
-        //  time: '', // Clear the time input after adding
+          time: '', // Clear the time input after adding
         });
       }
-
-      console.log(selectedTime);
-
   return (
     <>
           {showAdd && (
@@ -117,7 +114,6 @@ export default function AddMed(props) {
                      <div className='time-input'>
                        <input type='time' 
                         name='time' 
-                        required
                         value={medication.time}
                         onChange={handleTimeChange}
                        />

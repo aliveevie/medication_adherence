@@ -80,6 +80,7 @@ app.post('/api/patient/appointment', async (req, res) => {
 app.post('/api/patient/medication', async (req, res) => {
         const {medicationName, dose, duration, patientEmail, time }  = req.body;
 
+        console.log(req.body)
 
         try {
             const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 

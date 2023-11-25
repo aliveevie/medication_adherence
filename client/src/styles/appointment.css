@@ -53,10 +53,10 @@
 
 .save {
   padding: 5px;
-  margin: 10px;
   display: block;
   width: 100%;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .save p {

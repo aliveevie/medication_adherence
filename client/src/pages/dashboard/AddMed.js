@@ -9,6 +9,14 @@ export default function AddMed(props) {
     const { email, name, showAdd, handleAddMed, hideAddMed } = props;
 
     const [selectedTime, setSelectedTime] = useState([]);
+
+    const [medication, setMedication] = useState({
+      medicationName: '',
+      dose: '',
+      duration: '',
+      time: '',
+    });
+
   
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -16,7 +24,7 @@ export default function AddMed(props) {
         const medicationName = event.target.medicationName.value
         const dose = event.target.dose.value
         const duration = event.target.duration.value
-        const time = event.target.time.value;
+        const time = selectedTime;
         const patientEmail = email
         
       const data = {
@@ -37,6 +45,15 @@ export default function AddMed(props) {
             },
             body: JSON.stringify(data),
           });
+
+          setMedication({
+            ...medication,
+            medicationName: '',
+            dose: '',
+            duration: '',
+          });
+
+          setSelectedTime([]);
       
           // Check if the request was successful (status code 2xx)
           if (response.ok) {
@@ -55,13 +72,7 @@ export default function AddMed(props) {
         }
       };
       
-      const [medication, setMedication] = useState({
-        medicationName: '',
-        dose: '',
-        duration: '',
-        time: '',
-      });
-
+      
       function handleTimeChange(e) {
         setMedication({
           ...medication,
@@ -73,13 +84,21 @@ export default function AddMed(props) {
         setSelectedTime((prevTimes) => [...prevTimes, medication.time]);
         setMedication({
           ...medication,
-      //    time: '', // Clear the time input after adding
+          time: '',
         });
       }
 
       const handleDeleteTime = (timeToDelete) => {
         const updatedTimes = selectedTime.filter((time) => time !== timeToDelete);
         setSelectedTime(updatedTimes);
+      };
+
+      const handleChange = (event) => {
+        const { name, value } = event.target;
+        setMedication({
+          ...medication,
+          [name]: value,
+        });
       };
 
 
@@ -97,6 +116,8 @@ export default function AddMed(props) {
                      Name of Medication
                      <input type='text' name="medicationName" 
                      placeholder='Type'
+                     value={medication.medicationName}
+                     onChange={handleChange}
                      required
                      />
                    </label>
@@ -105,6 +126,8 @@ export default function AddMed(props) {
                      Number of Dosage
                      <input type='number' name="dose" 
                      placeholder='Type a Number'
+                     value={medication.dose}
+                     onChange={handleChange}
                      required
                      />
                    </label>
@@ -113,6 +136,8 @@ export default function AddMed(props) {
                      Duration
                      <input type='number' name="duration" 
                      placeholder='Type Number of Days'
+                     value={medication.duration}
+                     onChange={handleChange}
                      required
                      />
                    </label>
@@ -124,7 +149,6 @@ export default function AddMed(props) {
                         name='time' 
                         value={medication.time}
                         onChange={handleTimeChange}
-                        required
                        />
                       <button type='button'
                       onClick={handleTimeAdd}

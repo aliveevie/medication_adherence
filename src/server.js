@@ -80,15 +80,36 @@ app.post('/api/patient/appointment', async (req, res) => {
 app.post('/api/patient/medication', async (req, res) => {
         const {medicationName, dose, duration, patientEmail, time }  = req.body;
 
-        console.log(req.body)
-
         try {
+            let medication_id;
+
             const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
             [patientEmail]);
     
             const patient_id = result.rows[0].patient_id;
-            const insertResult = db.query('INSERT INTO addMedications(medicationname, dose, duration, patient_id, time) VALUES($1, $2, $3, $4, $5)', 
-            [medicationName, dose, duration, patient_id, time]);
+            const selectmed_id = await db.query('SELECT medication_id FROM addmedications WHERE medicationname=$1', 
+            [medicationName]);
+
+            if(selectmed_id.rows.length==0){
+                const insertResult = await db.query('INSERT INTO addMedications(medicationname, dose, duration, patient_id) VALUES($1, $2, $3, $4)', 
+                [medicationName, dose, duration, patient_id])
+                .then(async () => {
+                  const med_id = await db.query('SELECT medication_id FROM addmedications WHERE medicationname=$1', 
+                    [medicationName])
+                    medication_id = med_id.rows[0].medication_id
+                })
+            }else{
+                medication_id = selectmed_id.rows[0].medication_id;
+            }
+
+            for(let i = 0; i < time.length; i++){
+                const insertTimes = await db.query('INSERT INTO medicationtime(medication_id, time) VALUES($1, $2)', 
+                [medication_id, time[i]])
+                .then(() => console.log('Data Insert Successful!'))
+            }
+
+            
+    
         }  catch (error) {
             console.error('Error fetching activemed data:', error);
             res.status(500).json({ error: 'Internal Server Error' });

@@ -55,6 +55,7 @@ app.post('/api/patient/login', async (req, res) => {
         const { email, password } = req.body;
         const result = await db.query('SELECT first_name, email, password, patient_id FROM patients WHERE email=$1 AND password=$2', [email, password])
        
+        console.log(result.rows)
         
         if(result.rows.length===0){
             res.json({Error: 'Invalid Username or password'});
@@ -105,32 +106,43 @@ app.post('/api/patient/medication', async (req, res) => {
             for(let i = 0; i < time.length; i++){
                 const insertTimes = await db.query('INSERT INTO medicationtime(medication_id, time) VALUES($1, $2)', 
                 [medication_id, time[i]])
-                .then(() => console.log('Data Insert Successful!'))
+                .then(() => {
+                    console.log({ data:'Data Insert Successful!' })
+                })
             }
-
-            
-    
         }  catch (error) {
             console.error('Error fetching activemed data:', error);
             res.status(500).json({ error: 'Internal Server Error' });
-    }
-
-       
-       
+    }         
 });
 
 app.post('/api/patients/activemed', async (req, res) => {
     const { patient_id } = req.body;
+    console.log(patient_id)
     try {
-      const result = await db.query('SELECT medicationname, dose, duration, time FROM addMedications WHERE patient_id=$1', [patient_id]);
-      
+      const result = await db.query(`
+        SELECT 
+          addMedications.medication_id,
+          addMedications.medicationname, 
+          addMedications.dose, 
+          addMedications.duration, 
+          medicationtime.time 
+        FROM 
+          addMedications 
+        JOIN 
+          medicationtime 
+        ON 
+          addMedications.medication_id = medicationtime.medication_id 
+        WHERE 
+          addMedications.patient_id = $1
+      `, [patient_id]).then((data) => res.json(data.rows))
       // Send a valid JSON response to the client
-      res.json(result.rows);
     } catch (error) {
       console.error('Error fetching activemed data:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
+
   
 
 

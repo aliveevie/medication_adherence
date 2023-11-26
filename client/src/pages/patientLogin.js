@@ -147,7 +147,10 @@ const PatientLogin = (props) => {
 
     {!signup && reset &&  !dashboard && <ResetVerification />}
 
-    {dashboard &&  !reset && !signup && <Dashboard  name={name} email={email}  patient_id={id} /> }
+    {dashboard &&  !reset && !signup && <Dashboard  
+      name={name} 
+      email={email}  
+      id={id} /> }
 
    </>
   );

@@ -10,9 +10,10 @@ export default function ActiveMedication(props) {
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState(null);
   
+  
 useEffect(() => {
-    handleSubmit()
-}, [])
+    handleSubmit();
+}, []);
 
   async function handleSubmit(){
     const patient_id = id; // Replace with the actual patient ID
@@ -27,8 +28,9 @@ useEffect(() => {
       body: JSON.stringify({ patient_id }),
     });
 
-    const responseData = await response.json()
-    setData(responseData)
+    const responseData = await response.json();
+    console.log(responseData);
+    setData(responseData);
     
   } catch (error) {
     console.error('Error fetching activemed data:', error);
@@ -39,22 +41,38 @@ useEffect(() => {
       setCurrent(medication)
   }
 
+  
   return (
     <>
       {!current && (
         <div className='activ-med'>
           <div className='med-list'>
-            {data.map((medication) => (
+            {/* Group the data by medication name */}
+            {Object.values(data.reduce((acc, medication) => {
+              if (!acc[medication.medicationname]) {
+                acc[medication.medicationname] = {
+                  ...medication,
+                  times: [medication.time],
+                };
+              } else {
+                acc[medication.medicationname].times.push(medication.time);
+              }
+              return acc;
+            }, {})).map((medicationGroup) => (
               <div
-                key={medication.medicationname}
+                key={medicationGroup.medicationname}
                 className='medication-item'
                 style={{ backgroundColor: '#c0f8da' }}
-                onClick={() => handleCurrent(medication)}
+                onClick={() => handleCurrent(medicationGroup)}
               >
-                <h3>{medication.medicationname} - {medication.dose}</h3>
+                <h3>{medicationGroup.medicationname} - {medicationGroup.dose}</h3>
                 <div className='medication-stop'>
                   <img src={stop} alt='Stop Icon' />
-                  <p>Today {formatTime(medication.time)}</p>
+                  <p>Today</p>
+                  {/* Map through the times for the current medication group */}
+                  {medicationGroup.times.map((time) => (
+                    <p key={time}>{formatTime(time)}</p>
+                  ))}
                 </div>
               </div>
             ))}
@@ -66,7 +84,6 @@ useEffect(() => {
         <EachMed
           medication={current}
           handleCurrent={() => setCurrent(null)}
-          current={current}
         />
       )}
     </>

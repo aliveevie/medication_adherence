@@ -6,10 +6,8 @@ import formatTime from '../../functions/formatTime';
 
 export default function AddMed(props) {
 
-    const { email, name, showAdd, handleAddMed, hideAddMed } = props;
-
+    const { email, name, showAdd, handleAddMed, hideAddMed, id } = props;
     const [selectedTime, setSelectedTime] = useState([]);
-
     const [medication, setMedication] = useState({
       medicationName: '',
       dose: '',
@@ -17,7 +15,6 @@ export default function AddMed(props) {
       time: '',
     });
 
-  
     const handleSubmit = async (event) => {
         event.preventDefault();
 

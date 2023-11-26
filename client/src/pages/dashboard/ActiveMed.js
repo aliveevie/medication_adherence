@@ -83,6 +83,7 @@ useEffect(() => {
         <EachMed
           medication={current}
           handleCurrent={() => setCurrent(null)}
+          current={current}
         />
       )}
     </>

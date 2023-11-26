@@ -29,15 +29,23 @@ export default function EachMed({ handleCurrent, medication, current }) {
             </div>
         </div>
         <div  className='duration' >
-        <div className='check-in' >
-            <div className='days' >
-            <p>{formatTime(medication.time)}</p>
-            <p  onClick={handleLast} >Check In</p>
+        <div className='check-in'>
+            <div className='days-number'>
+                {Array.from({ length: medication.duration }, (_, index) => (
+                <div key={index}>
+                    <p>{`Day ${index + 1}`}</p>
+                    <div className='days'>
+                    <p>Pending</p>
+                    <p onClick={handleLast}>Check In</p>
+                    </div>
+                </div>
+                ))}
+               
+            </div>
         </div>
+
         </div>
-        </div>
-        <p>Day 1</p>
-       
+ 
         </div>)}
 
         {last && <LastComponent 

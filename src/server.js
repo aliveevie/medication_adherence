@@ -126,7 +126,8 @@ app.post('/api/patients/activemed', async (req, res) => {
           addMedications.medicationname, 
           addMedications.dose, 
           addMedications.duration, 
-          medicationtime.time 
+          medicationtime.time,
+          medicationtime.status
         FROM 
           addMedications 
         JOIN 

@@ -8,6 +8,8 @@ import { useState } from 'react';
 
 export default function LastComponent({ handleCurrent, medication, current }) {
 
+    console.log(medication);
+
     const [formData, setFormData] = useState({
         choice: '',
         calendar: '',

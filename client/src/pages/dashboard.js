@@ -15,7 +15,7 @@ import ActiveMedication from './dashboard/ActiveMed';
 
 const Dashboard = (props) => {
   const { name, email, id } = props;
-  console.log(props)
+ 
   const [showApment, setShowApment] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [complete, setComplete] = useState(false);

@@ -9,7 +9,7 @@ export default function ActiveMedication(props) {
   const { name, email, id } = props;
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState(null);
-  
+
   
 useEffect(() => {
     handleSubmit();
@@ -37,8 +37,8 @@ useEffect(() => {
   }
   }
 
-  function handleCurrent(medication){
-      setCurrent(medication)
+  function handleCurrent(medication) {
+    setCurrent({ ...medication, times: medication.times });
   }
 
   
@@ -69,7 +69,7 @@ useEffect(() => {
                 <div className='medication-stop'>
                   <img src={stop} alt='Stop Icon' />
                   <p>Today</p>
-                  {/* Map through the times for the current medication group */}
+               
                   {medicationGroup.times.map((time) => (
                     <p key={time}>{formatTime(time)}</p>
                   ))}

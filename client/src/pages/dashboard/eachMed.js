@@ -7,7 +7,7 @@ import LastComponent from './last';
 
 
 export default function EachMed({ handleCurrent, medication, current }) {
-
+    console.log(medication)
     const [last, setLast] = useState(false);
 
     function handleLast(){
@@ -20,18 +20,24 @@ export default function EachMed({ handleCurrent, medication, current }) {
         <img src={back} alt='Medication details' onClick={handleCurrent} />
         <div className='medication-item'>
             <h2>{medication.medicationname} - {medication.dose}</h2>
+            <img src={icons} alt='Stop Icon' />
             <div className='medication-stop'>
-                <img src={icons} alt='Stop Icon' />
-                <p>Today {formatTime(medication.time)}</p>
+              
+                {medication.times.map((time) => (
+                  <p key={time}>{formatTime(time)}</p>
+                ))}
             </div>
         </div>
-        <p>Day 1</p>
+        <div  className='duration' >
         <div className='check-in' >
             <div className='days' >
             <p>{formatTime(medication.time)}</p>
             <p  onClick={handleLast} >Check In</p>
-            </div>
         </div>
+        </div>
+        </div>
+        <p>Day 1</p>
+       
         </div>)}
 
         {last && <LastComponent 

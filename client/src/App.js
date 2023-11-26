@@ -5,7 +5,7 @@ import Introduction from "./components/introduction";
 import PatientLogin from "./pages/patientLogin";
 import PatientSignUp from "./pages/patientReg";
 import Confirmation from "./pages/confimationLink";
-import DoctorLogin from "./pages/doctorLogin";
+import DoctorLogin from "./pages/doctorlogin";
 import SignUp from "./pages/signup";
 import NewPassword from "./pages/newPassword";
 

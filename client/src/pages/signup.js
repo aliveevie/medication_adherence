@@ -1,9 +1,9 @@
-// LoginForm.js
+// SignUp.js
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 
 
-const LoginForm = () => {
+const SignUp = () => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -51,4 +51,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignUp;

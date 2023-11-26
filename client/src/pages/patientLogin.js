@@ -7,6 +7,7 @@ import PatientSignUp from "./patientReg";
 import google from "../icons/google.png";
 import ResetVerification from "./verificationLink";
 import Dashboard from "./dashboard";
+import { FaLock, FaLockOpen } from "react-icons/fa";
 
 const PatientLogin = (props) => {
   const { api2 } = props;
@@ -79,11 +80,21 @@ const PatientLogin = (props) => {
           setReset(true);
   }
 
+  const [showPassword, setShowPassword] = useState("");
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
    <>
    {!signup && !reset && !dashboard && (
      <form className="auth-form" onSubmit={handleSubmit} method="post">
-     <img src={logo} alt="logo" />
+    <div className="logo">
+            <img src={logo} alt="logo" width={40} height={40} />
+            <h3 style={{ color: "#0E9061" }}>
+              Med<span style={{ color: "#000000" }}>Ease</span>
+            </h3>
+          </div>
      <div className='form-header' >
          <h2>Welcome to MedEase</h2>
          <p>Sign In</p>
@@ -102,19 +113,26 @@ const PatientLogin = (props) => {
      </label>
      <label>
        Password
-       <div className="password-input">
-         <input
-           type="password"
-           name="password"
-           value={signupData.password}
-           onChange={handleChange}
-           placeholder="8 characters"
-           required
-         />
-      
-       </div>
+        <div className="password-input">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={signupData.password}
+                onChange={handleChange}
+                placeholder="8 characters"
+                required
+              />
+              <button
+                type="button"
+                onClick={handleTogglePassword}
+                className="toggle-password-button"
+                style={{ top: "53%" }}
+              >
+                {showPassword ? <FaLockOpen /> : <FaLock />}
+              </button>
+            </div>
      </label>
-     <div className="checkbox-container">
+     <div className="checkbox-container2">
        <input type="checkbox" /><span>Remember Password</span>
        <a href='#' onClick={handleReset} >Forgot Password</a>
      </div>
@@ -126,20 +144,22 @@ const PatientLogin = (props) => {
        <hr />
      </div>
      <div className="google-signup">
-       <i className="fab fa-google"></i>
-       <a href="/">Sign In With Google</a>
-     </div>
-     <div className="terms">
-       <p>
-         By clicking on “create account” you agree to MedEase{' '}
-         <a href="/">terms and conditions</a>
-       </p>
-     </div>
-     <div className="already">
-       <p>
-         Not have an Account <a href="#" onClick={handleShowSignUp} >SignUp</a>
-       </p>
-     </div>
+            <img src={google} width={20} height={20} alt="google" />
+            <Link to="/">Sign up With Google</Link>
+          </div>
+          <div className="login">
+            <p>
+              By clicking on “create account” you agree to MedEase{" "}
+              <Link to="/">terms and conditions</Link>
+            </p>
+
+            <p>
+              Don't have an Account{" "}
+              <Link to="#" onClick={handleShowSignUp}>
+                Sign Up
+              </Link>
+            </p>
+          </div>
    </form>
    )}
 

@@ -4,6 +4,19 @@ const app = express();
 const db = require('../database/db');
 const path = require('path');
 const bodyParser = require('body-parser');
+const fs = require('fs');
+
+const multer = require('multer');
+
+
+const storage = multer.diskStorage({
+    destination: 'uploads/',
+    filename: function (req, file, cb) {
+      cb(null, file.originalname);
+    },
+  });
+  
+const upload = multer({ storage: storage });
 
 
 app.use(bodyParser.json());
@@ -55,7 +68,7 @@ app.post('/api/patient/login', async (req, res) => {
         const { email, password } = req.body;
         const result = await db.query('SELECT first_name, email, password, patient_id FROM patients WHERE email=$1 AND password=$2', [email, password])
        
-        console.log(result.rows)
+     //   console.log(result.rows)
         
         if(result.rows.length===0){
             res.json({Error: 'Invalid Username or password'});
@@ -66,7 +79,7 @@ app.post('/api/patient/login', async (req, res) => {
 
 app.post('/api/patient/appointment', async (req, res) => {
         const { doctorName, calendar, time, patientEmail } = req.body;
-        console.log(req.body)
+       // console.log(req.body)
 
         const result = await db.query('SELECT patient_id FROM patients WHERE email=$1', 
         [patientEmail])
@@ -144,7 +157,34 @@ app.post('/api/patients/activemed', async (req, res) => {
     }
 });
 
+app.post('/api/patient/updatemedication', upload.single('upload'), async (req, res) => {
+    let { choice, actualTime, normalTime, feeling, medication_id } = req.body;
+    
+    if(actualTime===''){
+            actualTime=normalTime
+    }
+        console.log(req.body);
+    try {
+      // Check if a file is uploaded
+      let filePath = req.file.path;
+     
   
+      // Store the file in the database (replace 'medicationtime' with your actual table name)
+      const result = await db.query(
+        `UPDATE medicationtime 
+         SET status = 'complete', actual_time = $1, feelings = $2, picture_url = $3 
+         WHERE medication_id = $4 AND time = $5 
+         `,
+        [actualTime, feeling, filePath, medication_id, normalTime]
+      ).then(() => console.log('Data Insert Successfull!'));
+  
+      // Send the response back to the client
+     // res.json({ success: true, updatedData: result.rows[0] });
+    } catch (error) {
+      console.error('Error processing file and form data:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 
 app.get('/', (req, res) => {

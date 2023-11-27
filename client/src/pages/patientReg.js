@@ -171,8 +171,8 @@ const PatientSignUp = (props) => {
         Genotype
         <div className="password-input">
           <input
-            type="number"
-            name="height"
+            type="text"
+            name="genotype"
             placeholder='Input'
           />
         </div>
@@ -181,9 +181,9 @@ const PatientSignUp = (props) => {
         Doctor's Email
         <div className="password-input">
           <input
-            type="number"
-            name="height"
-            placeholder='kg'
+            type="email"
+            name="doctorEmail"
+            placeholder='Type'
           />
         </div>
       </label>

@@ -11,7 +11,10 @@
   margin: 0 auto; /* Center the form horizontally */
   margin-top: 20px; /* Adjust the top margin as needed */
   margin-bottom: 100px;
+  padding: 20px;
+  text-align: center;
 }
+
 
 .logo {
   display: flex;
@@ -221,4 +224,8 @@ button:hover{
   font-weight: 500;
   color: #0e9061;
   text-decoration: none;
+}
+
+.terms{
+  margin: 40px;
 }

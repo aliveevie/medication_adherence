@@ -7,6 +7,7 @@ import formatTime from '../../functions/formatTime';
 
 export default function ActiveMedication(props) {
   const { name, email, id } = props;
+ 
   const [data, setData] = useState([]);
   const [current, setCurrent] = useState(null);
 

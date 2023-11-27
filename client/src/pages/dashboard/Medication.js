@@ -1,8 +1,9 @@
 import React from 'react';
 import AddMed from './AddMed';
+import ActiveMedication from './ActiveMed';
 
 export default function Medication(props) {
-  let { name, dName, date, time } = props;
+  let { name, dName, date, time, id } = props;
 
   const formatDate = (inputDate) => {
     const options = { day: 'numeric', month: 'short' };
@@ -29,9 +30,11 @@ export default function Medication(props) {
             <p>Your next appointment with Dr. {dName} is scheduled for {date}, {formatTime(time)}</p>
           </div>
         </div>
-        <div className="active-med">
-          <p>Active Medication</p>
-        </div>
+       
+       <h3>Active Medication</h3>
+        <ActiveMedication 
+        id={id}
+        />
       </div>
     </>
   );

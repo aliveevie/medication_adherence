@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
 import Medication from './Medication';
+import ActiveMedication from './ActiveMed';
 
 export default function Appointment(props) {
-
-  
     const [selectedTime, setSelectedTime] = useState('');
-    const { showApment, handleShowApment, email, name, handleHideAppoint } = props;
+    const { showApment, handleShowApment, email, name, handleHideAppoint, id } = props;
     const [dName, setDName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -28,9 +27,7 @@ export default function Appointment(props) {
           time,
           patientEmail
         };
-
         
-      
         try {
           // Make a POST request to the API endpoint
           const response = await fetch('/api/patient/appointment', {
@@ -121,7 +118,14 @@ export default function Appointment(props) {
               </div> 
         )}
 
-          {hide &&  <Medication  name={name} dName={dName} time={time} date={date} />}
+          {hide &&  
+            <Medication  
+            name={name} 
+            dName={dName} 
+            time={time} 
+            date={date} 
+            id={id}
+          />}
         
     </>
     

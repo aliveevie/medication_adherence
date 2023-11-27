@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
 import formatTime from '../../functions/formatTime';
+import ActiveMedication from './ActiveMed';
 
 
 export default function AddMed(props) {
@@ -14,6 +15,8 @@ export default function AddMed(props) {
       duration: '',
       time: '',
     });
+
+    const [showActive, setShowActive] = useState(false)
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -51,6 +54,7 @@ export default function AddMed(props) {
           });
 
           setSelectedTime([]);
+          setShowActive(true);
       
           // Check if the request was successful (status code 2xx)
           if (response.ok) {
@@ -68,7 +72,6 @@ export default function AddMed(props) {
           console.error('Error submitting appointment data:', error);
         }
       };
-      
       
       function handleTimeChange(e) {
         setMedication({
@@ -102,7 +105,8 @@ export default function AddMed(props) {
 
   return (
     <>
-          {showAdd && (
+     <ActiveMedication />
+          {!showActive && (
                <div className='Appointment'>
                <div className='back-arrow' onClick={hideAddMed} >
                  <img src={back} alt='back arrow'  />
@@ -165,6 +169,8 @@ export default function AddMed(props) {
                </div>
              </div> 
           )}
+
+        
              
     </>
     

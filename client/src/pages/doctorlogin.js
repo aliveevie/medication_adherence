@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
-import PatientSignUp from './patientReg';
+import DoctorSignUp from './doctorSign';
 import ResetVerification from './verificationLink';
+import DoctorDashboard from './doctorDashboard';
 
-const DoctorLogin = () => {
+const DoctorLogin = ({api, api2, name, email, doctor, id}) => {
+
+
   const [signupData, setSignupData] = useState({
     email: ''
   });
@@ -32,9 +35,8 @@ const DoctorLogin = () => {
   }
 
   function handleReset(){
-          setReset(true);
+        setReset(true);
   }
-
 
 
   return (
@@ -77,15 +79,7 @@ const DoctorLogin = () => {
        <a href='#' onClick={handleReset} >Forgot Password</a>
      </div>
      <button type="submit">Sign</button>
-     <div className="or-divider">
-       <hr />
-       <span className="or-text">or</span>
-       <hr />
-     </div>
-     <div className="google-signup">
-       <i className="fab fa-google"></i>
-       <a href="/">Sign In With Google</a>
-     </div>
+   
      <div className="terms">
        <p>
          By clicking on “create account” you agree to MedEase{' '}
@@ -100,7 +94,22 @@ const DoctorLogin = () => {
    </form>
    )}
 
-    {signup && !reset && <PatientSignUp /> }
+    {signup && !reset && <DoctorSignUp
+      name={name}
+      email={email}
+      api={api}
+      api2={api2}
+    /> }
+
+    {!signup && reset &&    
+        <DoctorDashboard 
+        name={name} 
+        email={email} id={id} 
+        api={api}
+        api2={api2}
+        doctor={doctor}
+
+      />} 
 
     {!signup && reset && <ResetVerification />}
 

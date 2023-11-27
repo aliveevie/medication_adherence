@@ -25,7 +25,7 @@ function  DoctorDesktTopHeader (props){
               <img src={home}  alt='Home Icon' />
               Home
             </div>
-            <div className='addMed'  onClick={handleAddMed} >
+            <div className='addMed' onClick={handleShowApment} >
               <img src={addMed}  alt='AddMed Icon' />
               Add Patient
             </div>

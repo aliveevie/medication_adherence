@@ -14,14 +14,19 @@ import ActiveMedication from './dashboard/ActiveMed';
 import DoctorDesktTopHeader from './dashboard/doctorHeader';
 import DoctorMobileHeader from './dashboard/doctorMobile';
 
+import AddPatient from './dashboard/AddPatient';
+import ActivePatient from './dashboard/ActivePatient';
+import PatientData from './dashboard/PatientData';
 
-const Dashboard = (props) => {
+
+const DoctorDashboard  = (props) => {
   const { name, email, id, api, api1, doctor } = props;
+  // console.log('Dashboard!')
 
   const [showApment, setShowApment] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
   const [complete, setComplete] = useState(false);
   const [active, setActive] = useState(false);
+  const [showAdd, setShowAdd] = useState(false);
   
 
   const getWindowDimensions = () => {
@@ -89,10 +94,9 @@ const Dashboard = (props) => {
  }
 
  function handleHome(){
-    setActive(false);
-    setComplete(false);
-    setShowAdd(false);
-    setShowApment(false);
+      setActive(false);
+      setShowAdd(false);
+      setShowApment(false);
  }
 
   return (
@@ -122,9 +126,10 @@ const Dashboard = (props) => {
           handleActive={handleActive}
           handleComplete={handleComplete}
           handleHome={handleHome}
-          />}
+          />
+          }
 
-          {!showApment && !showAdd  && !complete && !active && (
+          {!showApment && !active && !complete && (
 
             <><div className='dash-body'>
             
@@ -138,39 +143,22 @@ const Dashboard = (props) => {
             )}
       </div>
       
-          {showApment && !showAdd  && !complete && !active && <Appointment 
-          showApment={showApment} 
+          {showApment && !active && !complete &&  <AddPatient 
           handleShowApment={handleShowApment} 
-          name={name} 
-          email={email} 
-          id={id}
-          handleHideAppoint={handleHideAppoint}
+          handleHome={handleHome}
           />}
 
-        {!showApment && showAdd  && !complete && !active &&<AddMed
-        handleAddMed={handleAddMed}
-        showAdd={showAdd}
-        hideAddMed={hideAddMed}
-        name={name}
-        email={email}
-        id={id}
-        />}
+          {active && !showApment &&  !complete && <ActivePatient 
+            handleActive={handleActive}
+          />}
 
-        {!showApment && !showAdd  && complete && !active && <CompleteMed 
-        handleComplete={handleComplete}
-        name={name}
-        email={email}
-        id={id}
-        />}
+          {complete && !showApment && !active  && <PatientData 
+            handleComplete={handleComplete}
+          /> }
 
-        {!showApment && !showAdd  && !complete && active && <ActiveMedication
-        handleActive={handleActive}
-        name={name}
-        email={email}
-        id={id}
-      />}
+    
 
       </>
   );
 };
-export default Dashboard;
+export default DoctorDashboard;

@@ -41,7 +41,7 @@ function DoctorVertical(props) {
               <img src={home} alt='Home Icon'  />
               Home
             </div>
-            <div className='side' onClick={handleAddMed} >
+            <div className='side' onClick={handleShowApment} >
               <img src={addMed} alt='AddMed Icon' />
               Add Patient
             </div>

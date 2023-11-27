@@ -4,6 +4,7 @@ import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
 import Dashboard from './dashboard';
 import DoctorDashboard from './doctorDashboard';
+import DoctorLogin from './doctorlogin';
 
 
 const DoctorSignUp = (props) => {
@@ -169,6 +170,16 @@ const DoctorSignUp = (props) => {
         api2={api2}
         doctor={doctor}
       />}
+
+      {showLogin && !dashboard && 
+      <DoctorLogin 
+          name={name} 
+          email={email} id={id} 
+          api={api}
+          api2={api2}
+          doctor={doctor}
+      />
+      }
 
     </>
   );

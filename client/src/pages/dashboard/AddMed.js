@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
 import formatTime from '../../functions/formatTime';
-import ActiveMedication from './ActiveMed';
-
+import Medication from './Medication';
 
 export default function AddMed(props) {
 
     const { email, name, showAdd, handleAddMed, hideAddMed, id } = props;
+    
     const [selectedTime, setSelectedTime] = useState([]);
     const [medication, setMedication] = useState({
       medicationName: '',
@@ -16,7 +16,7 @@ export default function AddMed(props) {
       time: '',
     });
 
-    const [showActive, setShowActive] = useState(false)
+    const [showActive, setShowActive] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -34,6 +34,8 @@ export default function AddMed(props) {
           patientEmail,
           time
       }
+
+      console.log(data);
 
         try {
           // Make a POST request to the API endpoint
@@ -55,6 +57,7 @@ export default function AddMed(props) {
 
           setSelectedTime([]);
           setShowActive(true);
+          console.log(showActive);
       
           // Check if the request was successful (status code 2xx)
           if (response.ok) {
@@ -101,11 +104,10 @@ export default function AddMed(props) {
         });
       };
 
-
+     
 
   return (
     <>
-     <ActiveMedication />
           {!showActive && (
                <div className='Appointment'>
                <div className='back-arrow' onClick={hideAddMed} >
@@ -170,8 +172,10 @@ export default function AddMed(props) {
              </div> 
           )}
 
+      
         
-             
+       
+
     </>
     
   );

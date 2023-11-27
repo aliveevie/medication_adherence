@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import back from '../../icons/back.svg';
 import '../../styles/appointment.css';
 import formatTime from '../../functions/formatTime';
 import Medication from './Medication';
+import Appointment from './Appointment';
+import ActiveMedication from './ActiveMed';
 
 export default function AddMed(props) {
 
-    const { email, name, showAdd, handleAddMed, hideAddMed, id } = props;
-    
+    const { email, name, showAdd, handleAddMed, hideAddMed, id, dName, time, date } = props;
+  
     const [selectedTime, setSelectedTime] = useState([]);
     const [medication, setMedication] = useState({
       medicationName: '',
@@ -18,9 +20,12 @@ export default function AddMed(props) {
 
     const [showActive, setShowActive] = useState(false);
 
+    useEffect(() => {
+      console.log(showActive);
+    }, [showActive]);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         const medicationName = event.target.medicationName.value
         const dose = event.target.dose.value
         const duration = event.target.duration.value
@@ -34,9 +39,6 @@ export default function AddMed(props) {
           patientEmail,
           time
       }
-
-      console.log(data);
-
         try {
           // Make a POST request to the API endpoint
           const response = await fetch('/api/patient/medication', {
@@ -166,13 +168,18 @@ export default function AddMed(props) {
                       </p>
                     ))}
                 </div>
-                    <button type="submit" >Save</button>
+                    <button type="submit">Save</button>
                  </form>
                </div>
              </div> 
           )}
 
-      
+        {showActive &&   <ActiveMedication 
+       id={id}
+       /> }
+
+     
+
         
        
 

@@ -109,7 +109,19 @@ const Dashboard = (props) => {
           handleActive={handleActive}
           handleComplete={handleComplete}
           handleHome={handleHome}
-          /> : <DeskTopHeader />}
+          /> : <DeskTopHeader 
+          name={name} 
+          email={email}
+          id={id}
+          showApment={showApment}
+          handleShowApment={handleShowApment}
+          handleHideAppoint={handleHideAppoint}
+          handleAddMed={handleAddMed}
+          hideAddMed={hideAddMed}
+          handleActive={handleActive}
+          handleComplete={handleComplete}
+          handleHome={handleHome}
+          />}
 
           {!showApment && !showAdd  && !complete && !active && (
 

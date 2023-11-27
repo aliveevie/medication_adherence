@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
 import Dashboard from './dashboard';
+import DoctorDashboard from './doctorDashboard';
+
 
 const DoctorSignUp = (props) => {
 
   const { api, api2, doctor } = props;
- 
+
   const [showLogin, setShowLogin] = useState(false);
   const [dashboard, setDashboard] = useState(false);
   const [name, setName] = useState('');
@@ -15,10 +17,10 @@ const DoctorSignUp = (props) => {
   const [error, setError] = useState('');
   const [id, setId] = useState('');
 
-  function handleLogin() {
-    setShowLogin(true);
-  }
 
+  function handleLogin() {
+      setShowLogin(true);
+  }
 
 
   const [signupData, setSignupData] = useState({
@@ -61,7 +63,7 @@ const DoctorSignUp = (props) => {
       setError(responseData.Error)
       if(responseData.name){
           setName(responseData.name);
-          setDashboard(true)
+          setDashboard(true);
           setEmail(responseData.email);
           setId(responseData.patient_id);
       }
@@ -158,12 +160,16 @@ const DoctorSignUp = (props) => {
       </div>
     </form>
     )}
-      {!showLogin && dashboard && <Dashboard  
-      name={name} email={email} id={id} 
-      api={api}
-      api2={api2}
-      doctor={doctor}
-      />}  
+
+      {!showLogin && dashboard && 
+      <DoctorDashboard 
+        name={name} 
+        email={email} id={id} 
+        api={api}
+        api2={api2}
+        doctor={doctor}
+      />}
+
     </>
   );
 };

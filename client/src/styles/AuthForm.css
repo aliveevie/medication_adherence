@@ -9,8 +9,8 @@
   border-radius: 8px;
   max-width: 400px; /* Set a maximum width for the form */
   margin: 0 auto; /* Center the form horizontally */
-  margin-top: 5vh; /* Adjust the top margin as needed */
-  margin-bottom: 20px;
+  margin-top: 20px; /* Adjust the top margin as needed */
+  margin-bottom: 100px;
 }
 
 .logo {
@@ -22,6 +22,7 @@
 
 .logo img {
   margin-top: 35px;
+ 
 }
 
 .logo h3 {

@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import "../styles/patient.css";
 import logo from "../icons/logo.png";
 import PatientSignUp from "../pages/patientReg";
+import DoctorSignUp from "../pages/doctorSign";
 
 export default function Patient() {
   const [showPatient, setShowPatient] = useState(false);
-  const [showDoctor, setShowDoctor] = useState(false);
+  const [showDoctor, setShowDoctor] = useState(true);
   const [api, setApi] = useState("");
   const [api2, setApi2] = useState("");
+  const [doctor, setDoctor] = useState('');
 
   const handlePatientRegister = () => {
     setShowPatient(true);
@@ -16,14 +18,15 @@ export default function Patient() {
   };
 
   function handleDoctorRegister() {
-    setShowPatient(true);
+    setShowDoctor(false);
     setApi("/api/doctor/register");
     setApi2("/api/doctor/login");
+    setDoctor('doctor')
   }
 
   return (
     <>
-      {!showPatient && !showDoctor && (
+      {!showPatient && showDoctor && (
         <div className="patient">
           <div className="logo">
             <img src={logo} alt="Logo" width={40} height={40} />
@@ -41,6 +44,10 @@ export default function Patient() {
       )}
 
       {showPatient && <PatientSignUp api={api} api2={api2} />}
+
+      {!showDoctor && <DoctorSignUp api={api} api2={api2} doctor={doctor}  />}
+
+     
     </>
   );
 }

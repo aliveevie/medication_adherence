@@ -2,12 +2,11 @@
 import React, { useState } from 'react';
 import '../styles/AuthForm.css';
 import logo from '../icons/logo.svg';
-import PatientLogin from './patientLogin';
 import Dashboard from './dashboard';
 
-const PatientSignUp = (props) => {
+const DoctorSignUp = (props) => {
 
-  const { api, api2 } = props;
+  const { api, api2, doctor } = props;
  
   const [showLogin, setShowLogin] = useState(false);
   const [dashboard, setDashboard] = useState(false);
@@ -78,6 +77,7 @@ const PatientSignUp = (props) => {
     }
   };
   
+
    
 
   return (
@@ -137,59 +137,11 @@ const PatientSignUp = (props) => {
           />
         </div>
       </label>
-      <label>
-        Weight(kg)
-        <div className="password-input">
-          <input
-            type="number"
-            name="weight"
-            placeholder='kg'
-          />
-        </div>
-      </label>
-      <label>
-        Height(ft)
-        <div className="password-input">
-          <input
-            type="number"
-            name="height"
-            placeholder='kg'
-          />
-        </div>
-      </label>
-      <label>
-        Blood Group
-        <div className="password-input">
-          <input
-            type="tex"
-            name="bloodgroup"
-            placeholder='Input'
-          />
-        </div>
-      </label>
-      <label>
-        Genotype
-        <div className="password-input">
-          <input
-            type="number"
-            name="height"
-            placeholder='Input'
-          />
-        </div>
-      </label>
-      <label>
-        Doctor's Email
-        <div className="password-input">
-          <input
-            type="number"
-            name="height"
-            placeholder='kg'
-          />
-        </div>
-      </label>
+
       <div className="checkbox-container">
         <input type="checkbox" /><span>Remember Password</span>
       </div>
+
       <button type="submit" >Create Account</button>
       <div>{error}</div>
      
@@ -206,15 +158,15 @@ const PatientSignUp = (props) => {
       </div>
     </form>
     )}
-
-    {showLogin && !dashboard && <PatientLogin  api2={api2} />}
-
-
-    {!showLogin && dashboard && <Dashboard  name={name} email={email} id={id} />}
-
+      {!showLogin && dashboard && <Dashboard  
+      name={name} email={email} id={id} 
+      api={api}
+      api2={api2}
+      doctor={doctor}
+      />}  
     </>
   );
 };
 
 
-export default PatientSignUp;
+export default DoctorSignUp;

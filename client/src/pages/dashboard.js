@@ -14,13 +14,22 @@ import ActiveMedication from './dashboard/ActiveMed';
 
 
 const Dashboard = (props) => {
-  const { name, email, id } = props;
+  const { name, email, id, api, api1, doctor } = props;
+  console.log(doctor);
  
   const [showApment, setShowApment] = useState(false);
   const [showAdd, setShowAdd] = useState(false);
   const [complete, setComplete] = useState(false);
   const [active, setActive] = useState(false);
+  const [welcome, setWelcome] = useState('');
 
+  useState(() => {
+    if(doctor=="doctor"){
+      setWelcome('');
+    }else{
+      setWelcome("Let's Help you remind you about your next appointment with your doctor")
+    }
+  }, []);
 
 
   const getWindowDimensions = () => {
@@ -131,7 +140,7 @@ const Dashboard = (props) => {
             </div>
             <div className='dash-text'>
               <h2>Hello {name}! Welcome</h2>
-              <p>Let’s help remind you about your next appointment with your doctor</p>
+              <p>{welcome}</p>
             </div>
           </div><div className='dash-heart'>
               <img src={heart} alt='The Heart' />

@@ -120,15 +120,7 @@ const PatientLogin = (props) => {
      </div>
        <div className='error'>{error}</div>
      <button type="submit"   >Sign</button>
-     <div className="or-divider">
-       <hr />
-       <span className="or-text">or</span>
-       <hr />
-     </div>
-     <div className="google-signup">
-       <i className="fab fa-google"></i>
-       <a href="/">Sign In With Google</a>
-     </div>
+    
      <div className="terms">
        <p>
          By clicking on “create account” you agree to MedEase{' '}
@@ -150,7 +142,8 @@ const PatientLogin = (props) => {
     {dashboard &&  !reset && !signup && <Dashboard  
       name={name} 
       email={email}  
-      id={id} /> }
+      id={id} /> 
+    }
 
    </>
   );

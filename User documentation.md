@@ -46,7 +46,7 @@ Seamlessly track your medication adherence with integrated reminders, ensuring a
 Healthcare professionals can easily access basic adherence reports, facilitating effective patient care. Additionally, our platform supports valuable feedback mechanisms.
 
 ### 4. Walkthrough
-We have prepared about a 5-minute screen recording that walks you through the platform. Kindly follow this link[How to Use the Platform]()
+We have prepared about a 5-minute screen recording that walks you through the platform. Kindly follow this link [How to Use the Platform](https://drive.google.com/drive/folders/18IHNX1yVW_uYrnzv_grdQqtSRV5gQc0t?usp=sharing)
 
 ### 5. Data Security: Your Privacy Matters
 At MedEase, we prioritize the security of your data. Our platform employs robust security measures to ensure the privacy and confidentiality of your medical information. We are committed to providing a secure environment for your healthcare data.
@@ -81,7 +81,7 @@ Q6. What if I forget my password?
 
 A: You can always click on "forgot password" and follow the instructions provided.
 
-**Contact Information:** For all inquiries, feedback, or technical support, the support team is readily available to assist you. Please feel free to contact via info@medical-adhrence.onrender.com
+**Contact Information:** For all inquiries, feedback, or technical support, the support team is readily available to assist you. Please feel free to contact via [Contact](https://www.linkedin.com/in/nwajiunor-edgar-38274a1b6/)
 
 ### 7. Conclusion
 

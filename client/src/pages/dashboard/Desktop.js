@@ -44,7 +44,7 @@ function DeskTopHeader(props){
             </div>
         </nav>
         <div className='Settings'>
-          <a><img src={setting}  alt='Active Med Icon' /></a>  
+          <a  href='/' ><img src={setting}  alt='Active Med Icon' /></a>  
         </div>
       </div>
     )

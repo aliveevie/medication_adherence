@@ -5,9 +5,9 @@ import addMed from '../../icons/addMed.svg';
 import activeMed from '../../icons/activeMed.svg';
 import addAppoint from '../../icons/addAppoint.svg';
 import complete from '../../icons/complete.svg';
-import setting from '../../icons/setting.svg';
 import '../../styles/vertical.css';
 import xxx from '../../icons/xxx.svg';
+import setting from '../../icons/logout.svg';
 
 
 function VerticalComponent(props) {
@@ -60,8 +60,11 @@ function VerticalComponent(props) {
             </div>
           </nav>
           <div className='settings' onClick={handleMed}>
+            <a href='/' >
             <img src={setting} alt='Active Med Icon' />
-            <p>Settings</p>
+            </a>
+           
+      
           </div>
         </div>
       )}
